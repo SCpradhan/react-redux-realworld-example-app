@@ -16,6 +16,10 @@ export default (state = {}, action) => {
   switch (action.type) {
     case ARTICLE_FAVORITED:
     case ARTICLE_UNFAVORITED:
+      if (action.error || !action.payload || !action.payload.article || !state.articles) {
+        return state;
+      }
+
       return {
         ...state,
         articles: state.articles.map(article => {

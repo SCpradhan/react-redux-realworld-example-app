@@ -1,0 +1,252 @@
+{
+    "e2e/jest.config.ts": [
+        "e2e/src/support/global-setup.ts",
+        "e2e/src/support/test-setup.ts",
+        "e2e/src/support/global-teardown.ts"
+    ],
+    "e2e/src/server/server.spec.ts": [],
+    "e2e/src/support/global-setup.ts": [],
+    "e2e/src/support/global-teardown.ts": [],
+    "e2e/src/support/test-setup.ts": [],
+    "jest.config.ts": [],
+    "jest.preset.js": [],
+    "src/app/models/http-exception.model.ts": [],
+    "src/app/routes/article/article.controller.ts": [
+        "./article.service",
+        "src/tests/services/article.service.test.ts",
+        "src/app/routes/article/article.mapper.ts",
+        "src/app/routes/article/comment.model.ts",
+        "src/app/routes/article/author.mapper.ts",
+        "src/app/routes/article/article.service.ts",
+        "../auth/auth",
+        "src/app/routes/article/article.model.ts"
+    ],
+    "src/app/routes/article/article.mapper.ts": [
+        "src/tests/services/article.service.test.ts",
+        "src/app/routes/article/author.mapper.ts",
+        "./author.mapper",
+        "src/app/routes/article/article.controller.ts",
+        "src/app/routes/article/article.service.ts",
+        "src/app/routes/article/article.model.ts"
+    ],
+    "src/app/routes/article/article.model.ts": [
+        "src/tests/services/article.service.test.ts",
+        "src/app/routes/article/article.mapper.ts",
+        "src/app/routes/article/comment.model.ts",
+        "./comment.model",
+        "src/app/routes/article/article.controller.ts",
+        "src/app/routes/article/article.service.ts"
+    ],
+    "src/app/routes/article/article.service.ts": [
+        "src/app/models/http-exception.model.ts",
+        "src/app/routes/article/article.mapper.ts",
+        "src/app/routes/article/comment.model.ts",
+        "src/prisma/prisma-client.ts",
+        "src/app/routes/profile/profile.model.ts",
+        "src/app/routes/profile/profile.service.ts",
+        "src/app/routes/article/article.model.ts",
+        "src/tests/services/article.service.test.ts",
+        "../../../prisma/prisma-client",
+        "./article.mapper",
+        "../profile/profile.utils",
+        "src/tests/services/profile.service.test.ts",
+        "src/app/routes/article/article.controller.ts",
+        "src/app/routes/profile/profile.controller.ts",
+        "../tag/tag.model",
+        "../../models/http-exception.model",
+        "src/app/routes/profile/profile.utils.ts",
+        "src/app/routes/article/author.mapper.ts",
+        "src/tests/utils/profile.utils.test.ts"
+    ],
+    "src/app/routes/article/author.mapper.ts": [
+        "../auth/user.model"
+    ],
+    "src/app/routes/article/comment.model.ts": [
+        "src/tests/services/article.service.test.ts",
+        "src/app/routes/article/article.mapper.ts",
+        "src/app/routes/article/article.controller.ts",
+        "./article.model",
+        "src/app/routes/article/article.service.ts",
+        "src/app/routes/article/article.model.ts"
+    ],
+    "src/app/routes/auth/auth.controller.ts": [
+        "./auth",
+        "./auth.service"
+    ],
+    "src/app/routes/auth/auth.service.ts": [
+        "src/app/routes/auth/registered-user.model.ts",
+        "src/app/models/http-exception.model.ts",
+        "./registered-user.model",
+        "src/app/routes/auth/register-input.model.ts",
+        "../../../prisma/prisma-client",
+        "src/prisma/prisma-client.ts",
+        "./user.model",
+        "./token.utils",
+        "src/app/routes/auth/token.utils.ts",
+        "../../models/http-exception.model",
+        "./register-input.model"
+    ],
+    "src/app/routes/auth/auth.ts": [
+        "src/app/routes/article/author.mapper.ts",
+        "src/app/routes/auth/token.utils.ts"
+    ],
+    "src/app/routes/auth/register-input.model.ts": [],
+    "src/app/routes/auth/registered-user.model.ts": [
+        "src/app/routes/auth/token.utils.ts"
+    ],
+    "src/app/routes/auth/token.utils.ts": [],
+    "src/app/routes/auth/user-request.d.ts": [],
+    "src/app/routes/auth/user.model.ts": [
+        "src/tests/services/article.service.test.ts",
+        "../article/article.model",
+        "src/app/routes/article/article.mapper.ts",
+        "src/app/routes/article/comment.model.ts",
+        "src/app/routes/article/article.controller.ts",
+        "../article/comment.model",
+        "src/app/routes/article/article.service.ts",
+        "src/app/routes/article/article.model.ts"
+    ],
+    "src/app/routes/profile/profile.controller.ts": [
+        "src/app/routes/profile/profile.utils.ts",
+        "src/tests/utils/profile.utils.test.ts",
+        "src/app/routes/profile/profile.service.ts",
+        "src/tests/services/profile.service.test.ts",
+        "src/app/routes/profile/profile.model.ts",
+        "./profile.service",
+        "../auth/auth"
+    ],
+    "src/app/routes/profile/profile.model.ts": [
+        "src/app/routes/profile/profile.utils.ts",
+        "src/tests/utils/profile.utils.test.ts",
+        "src/app/routes/profile/profile.service.ts",
+        "src/tests/services/profile.service.test.ts",
+        "src/app/routes/profile/profile.controller.ts"
+    ],
+    "src/app/routes/profile/profile.service.ts": [
+        "src/app/routes/profile/profile.utils.ts",
+        "src/app/models/http-exception.model.ts",
+        "src/tests/utils/profile.utils.test.ts",
+        "./profile.utils",
+        "../../../prisma/prisma-client",
+        "src/prisma/prisma-client.ts",
+        "src/tests/services/profile.service.test.ts",
+        "src/app/routes/profile/profile.model.ts",
+        "src/app/routes/profile/profile.controller.ts",
+        "../../models/http-exception.model"
+    ],
+    "src/app/routes/profile/profile.utils.ts": [
+        "./profile.model",
+        "src/tests/utils/profile.utils.test.ts",
+        "src/app/routes/profile/profile.service.ts",
+        "src/tests/services/profile.service.test.ts",
+        "src/app/routes/profile/profile.model.ts",
+        "src/app/routes/profile/profile.controller.ts",
+        "../auth/user.model"
+    ],
+    "src/app/routes/routes.ts": [
+        "src/app/routes/profile/profile.utils.ts",
+        "./profile/profile.controller",
+        "src/tests/services/article.service.test.ts",
+        "src/app/routes/article/article.mapper.ts",
+        "./tag/tag.controller",
+        "src/tests/utils/profile.utils.test.ts",
+        "src/app/routes/article/article.service.ts",
+        "src/app/routes/profile/profile.service.ts",
+        "src/tests/services/profile.service.test.ts",
+        "./article/article.controller",
+        "src/app/routes/article/article.controller.ts",
+        "src/app/routes/profile/profile.controller.ts",
+        "src/app/routes/profile/profile.model.ts",
+        "./auth/auth.controller",
+        "src/app/routes/article/article.model.ts"
+    ],
+    "src/app/routes/tag/tag.controller.ts": [
+        "./tag.service",
+        "../auth/auth"
+    ],
+    "src/app/routes/tag/tag.model.ts": [],
+    "src/app/routes/tag/tag.service.ts": [
+        "src/tests/services/article.service.test.ts",
+        "src/app/routes/article/article.mapper.ts",
+        "src/app/routes/article/author.mapper.ts",
+        "../../../prisma/prisma-client",
+        "src/prisma/prisma-client.ts",
+        "src/app/routes/article/article.controller.ts",
+        "./tag.model",
+        "src/app/routes/article/article.service.ts",
+        "src/app/routes/article/article.model.ts"
+    ],
+    "src/main.ts": [
+        "src/app/routes/routes.ts",
+        "./app/models/http-exception.model",
+        "src/app/models/http-exception.model.ts",
+        "src/app/routes/article/author.mapper.ts",
+        "e2e/src/server/server.spec.ts",
+        "./app/routes/routes"
+    ],
+    "src/prisma/prisma-client.ts": [
+        "@prisma/client"
+    ],
+    "src/prisma/seed.ts": [
+        "../app/routes/auth/auth.service",
+        "src/app/routes/auth/registered-user.model.ts",
+        "src/app/routes/routes.ts",
+        "src/tests/services/article.service.test.ts",
+        "@prisma/client",
+        "src/app/routes/article/article.mapper.ts",
+        "src/app/routes/article/comment.model.ts",
+        "@ngneat/falso",
+        "../app/routes/auth/registered-user.model",
+        "src/app/routes/article/article.controller.ts",
+        "../app/routes/article/article.service",
+        "src/app/routes/article/article.service.ts",
+        "src/app/routes/article/article.model.ts"
+    ],
+    "src/tests/prisma-mock.ts": [
+        "@prisma/client",
+        "src/prisma/prisma-client.ts",
+        "../prisma/prisma-client"
+    ],
+    "src/tests/services/article.service.test.ts": [
+        "src/app/routes/routes.ts",
+        "src/app/routes/article/article.mapper.ts",
+        "src/app/routes/article/comment.model.ts",
+        "src/app/routes/article/author.mapper.ts",
+        "../../app/routes/article/article.service",
+        "../prisma-mock",
+        "src/tests/prisma-mock.ts",
+        "src/app/routes/article/article.controller.ts",
+        "src/app/routes/auth/token.utils.ts",
+        "src/app/routes/article/article.service.ts",
+        "src/app/routes/article/article.model.ts"
+    ],
+    "src/tests/services/auth.service.test.ts": [
+        "src/app/routes/routes.ts",
+        "../prisma-mock",
+        "../../app/routes/auth/auth.service",
+        "src/tests/prisma-mock.ts",
+        "src/app/routes/auth/token.utils.ts"
+    ],
+    "src/tests/services/profile.service.test.ts": [
+        "src/app/routes/profile/profile.utils.ts",
+        "src/app/routes/routes.ts",
+        "../../app/routes/profile/profile.service",
+        "src/tests/utils/profile.utils.test.ts",
+        "src/app/routes/profile/profile.service.ts",
+        "../prisma-mock",
+        "src/tests/prisma-mock.ts",
+        "src/app/routes/profile/profile.model.ts",
+        "src/app/routes/profile/profile.controller.ts",
+        "src/app/routes/auth/token.utils.ts"
+    ],
+    "src/tests/services/tag.service.test.ts": [],
+    "src/tests/utils/profile.utils.test.ts": [
+        "src/app/routes/profile/profile.utils.ts",
+        "src/app/routes/routes.ts",
+        "src/app/routes/profile/profile.service.ts",
+        "src/tests/services/profile.service.test.ts",
+        "src/app/routes/profile/profile.model.ts",
+        "src/app/routes/profile/profile.controller.ts",
+        "../../app/routes/profile/profile.utils"
+    ]
+}

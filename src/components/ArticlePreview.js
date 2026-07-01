@@ -10,11 +10,17 @@ const NOT_FAVORITED_CLASS = 'btn btn-sm btn-outline-primary';
 const mapDispatchToProps = dispatch => ({
   favorite: slug => dispatch({
     type: ARTICLE_FAVORITED,
-    payload: agent.Articles.favorite(slug)
+    payload: agent.Articles.favorite(slug).catch(error => ({
+      article: null,
+      error: error.response && error.response.body ? error.response.body : error
+    }))
   }),
   unfavorite: slug => dispatch({
     type: ARTICLE_UNFAVORITED,
-    payload: agent.Articles.unfavorite(slug)
+    payload: agent.Articles.unfavorite(slug).catch(error => ({
+      article: null,
+      error: error.response && error.response.body ? error.response.body : error
+    }))
   })
 });
 
@@ -50,7 +56,7 @@ const ArticlePreview = props => {
         </div>
 
         <div className="pull-xs-right">
-          <button className={buttonClass} onClick={testingClick}>
+          <button className={favoriteButtonClass} onClick={handleClick}>
             <i className="ion-heart"></i> {article.favoritesCount}
           </button>
         </div>

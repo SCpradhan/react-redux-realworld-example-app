@@ -1,0 +1,487 @@
+[INFO] ================ Starting Automation Pipeline Execution Lifecycle RCA_v18 ================
+[INFO] ================ PHASE 0: JIRA INTEGRATION ================
+[INFO] Fetching issue HAP-1498 from https://aavaqe.atlassian.net...
+[INFO] Successfully fetched description for HAP-1498 (189 chars).
+[INFO] Dynamically populated QUERY from Jira HAP-1498 : Clicking the Favorite / Like button on an article card fails to register the action, causing a frontend UI mismatch or dropping the request due to an unhandled API routing endpoint failure.
+[INFO] ================ PHASE 1: GLOBAL TOPOLOGY GENERATION ================
+[INFO] --- [PHASE 1] Processing Repository: react-redux-realworld-example-app (Branch: master) ---
+[INFO] Phase 1 - Step 1 [react-redux-realworld-example-app]: Fetching supported languages for repository SCpradhan/react-redux-realworld-example-app...
+[INFO] [react-redux-realworld-example-app] Detected languages from GitHub: ['JavaScript', 'HTML']
+[INFO] Phase 1 - Step 2 [react-redux-realworld-example-app]: Mapping language signatures to standard target extensions...
+[INFO] [react-redux-realworld-example-app] Matched language [JavaScript] -> Registered extensions: ['.js', '.jsx', '.mjs', '.cjs']
+[WARNING] [react-redux-realworld-example-app] Language [HTML] not present in standard target table. Discarding.
+[INFO] [react-redux-realworld-example-app] Final targeting extension whitelist: ['.jsx', '.js', '.mjs', '.cjs']
+[INFO] [react-redux-realworld-example-app] Optimizing context pull: Downloading full repository zip archive...
+[INFO] --- Phase 1 - Step 3 [react-redux-realworld-example-app]: Generating Language-Aware Intra-Repo Dependency Tree (Whitelisted Extensions Only) ---
+[INFO]   [Whitelisted File Context] src/agent.js ──► Links: ['src/reducers/profile.js', 'src/components/Register.js', 'src/reducers/article.js', 'src/components/Profile.js', 'src/components/Login.js', 'src/components/Article/Comment.js']
+[INFO]   [Whitelisted File Context] src/components/App.js ──► Links: ['src/components/Register.js', '../components/Editor', 'src/components/ProfileFavorites.js', '../components/Settings', '../constants/actionTypes', '../components/Article', 'src/components/Editor.js', 'src/agent.js', 'src/reducers/article.js', 'src/reducers/settings.js', '../components/Profile', 'src/components/Settings.js', 'src/components/Header.js', 'src/reducers/common.js', 'src/reducers/editor.js', '../agent', '../components/Register', './Header', 'src/constants/actionTypes.js', '../store', '../components/Home', '../components/ProfileFavorites', 'src/reducers/profile.js', 'src/store.js', 'src/components/Profile.js', 'src/components/Login.js', '../components/Login']
+[INFO]   [Whitelisted File Context] src/components/Article/ArticleActions.js ──► Links: ['../../constants/actionTypes', 'src/agent.js', 'src/reducers/editor.js', '../../agent', 'src/reducers/article.js', 'src/constants/actionTypes.js', 'src/components/Editor.js']
+[INFO]   [Whitelisted File Context] src/components/Article/ArticleMeta.js ──► Links: ['./ArticleActions', 'src/reducers/article.js', 'src/components/Article/ArticleActions.js']
+[INFO]   [Whitelisted File Context] src/components/Article/Comment.js ──► Links: ['./DeleteButton', 'src/components/Article/DeleteButton.js']
+[INFO]   [Whitelisted File Context] src/components/Article/CommentContainer.js ──► Links: ['src/components/Article/CommentInput.js', 'src/components/Register.js', 'src/reducers/article.js', './CommentInput', 'src/components/Login.js', 'src/components/Article/Comment.js', './CommentList', 'src/components/Article/CommentList.js']
+[INFO]   [Whitelisted File Context] src/components/Article/CommentInput.js ──► Links: ['../../constants/actionTypes', 'src/agent.js', '../../agent', 'src/constants/actionTypes.js', 'src/components/Article/Comment.js']
+[INFO]   [Whitelisted File Context] src/components/Article/CommentList.js ──► Links: ['src/components/Article/Comment.js', './Comment']
+[INFO]   [Whitelisted File Context] src/components/Article/DeleteButton.js ──► Links: ['../../constants/actionTypes', 'src/agent.js', '../../agent', 'src/constants/actionTypes.js', 'src/components/Article/Comment.js']
+[INFO]   [Whitelisted File Context] src/components/Article/index.js ──► Links: ['src/components/Article/CommentContainer.js', './CommentContainer', '../../constants/actionTypes', 'src/agent.js', 'src/reducers/common.js', '../../agent', './ArticleMeta', 'src/reducers/article.js', 'src/components/Article/ArticleMeta.js', 'src/components/Home/Banner.js', 'src/constants/actionTypes.js', 'src/components/Article/Comment.js']
+[INFO]   [Whitelisted File Context] src/components/ArticleList.js ──► Links: ['src/components/ListPagination.js', 'src/components/ArticlePreview.js', 'src/reducers/article.js', './ArticlePreview', 'src/reducers/articleList.js', './ListPagination']
+[INFO]   [Whitelisted File Context] src/components/ArticlePreview.js ──► Links: ['src/agent.js', '../agent', 'src/reducers/article.js', 'src/constants/actionTypes.js', '../constants/actionTypes']
+[INFO]   [Whitelisted File Context] src/components/Editor.js ──► Links: ['src/components/ListErrors.js', 'src/agent.js', 'src/reducers/editor.js', '../agent', './ListErrors', 'src/reducers/article.js', 'src/constants/actionTypes.js', '../constants/actionTypes']
+[INFO]   [Whitelisted File Context] src/components/Header.js ──► Links: ['src/components/Register.js', 'src/reducers/editor.js', 'src/reducers/settings.js', 'src/components/Login.js', 'src/components/Settings.js', 'src/components/Editor.js']
+[INFO]   [Whitelisted File Context] src/components/Home/MainView.js ──► Links: ['src/reducers/common.js', '../../constants/actionTypes', 'src/agent.js', '../../agent', 'src/reducers/article.js', 'src/components/ArticleList.js', 'src/constants/actionTypes.js', 'src/reducers/articleList.js', '../ArticleList']
+[INFO]   [Whitelisted File Context] src/components/Home/Tags.js ──► Links: ['../../agent', 'src/reducers/article.js', 'src/agent.js']
+[INFO]   [Whitelisted File Context] src/components/Home/index.js ──► Links: ['./MainView', 'src/reducers/common.js', '../../constants/actionTypes', 'src/agent.js', '../../agent', './Tags', 'src/reducers/article.js', './Banner', 'src/components/Home/Banner.js', 'src/components/Home/MainView.js', 'src/constants/actionTypes.js']
+[INFO]   [Whitelisted File Context] src/components/ListPagination.js ──► Links: ['src/agent.js', '../agent', 'src/reducers/article.js', 'src/constants/actionTypes.js', '../constants/actionTypes']
+[INFO]   [Whitelisted File Context] src/components/Login.js ──► Links: ['src/components/ListErrors.js', 'src/agent.js', 'src/components/Register.js', '../agent', './ListErrors', 'src/constants/actionTypes.js', '../constants/actionTypes']
+[INFO]   [Whitelisted File Context] src/components/Profile.js ──► Links: ['src/reducers/common.js', 'src/agent.js', 'src/reducers/profile.js', '../agent', 'src/reducers/article.js', './ArticleList', 'src/constants/actionTypes.js', 'src/reducers/settings.js', '../constants/actionTypes', 'src/reducers/articleList.js', 'src/components/Settings.js', 'src/components/ArticleList.js']
+[INFO]   [Whitelisted File Context] src/components/ProfileFavorites.js ──► Links: ['src/agent.js', 'src/reducers/profile.js', '../agent', 'src/reducers/article.js', 'src/constants/actionTypes.js', '../constants/actionTypes', 'src/components/Profile.js', './Profile']
+[INFO]   [Whitelisted File Context] src/components/Register.js ──► Links: ['src/components/ListErrors.js', 'src/agent.js', '../agent', './ListErrors', 'src/constants/actionTypes.js', '../constants/actionTypes', 'src/components/Login.js']
+[INFO]   [Whitelisted File Context] src/components/Settings.js ──► Links: ['src/components/ListErrors.js', 'src/reducers/common.js', 'src/agent.js', 'src/reducers/profile.js', '../agent', './ListErrors', 'src/reducers/settings.js', 'src/constants/actionTypes.js', '../constants/actionTypes', 'src/components/Profile.js']
+[INFO]   [Whitelisted File Context] src/constants/actionTypes.js ──► Links: ['src/reducers/profile.js', 'src/components/Register.js', 'src/reducers/editor.js', 'src/reducers/article.js', 'src/reducers/settings.js', 'src/components/Profile.js', 'src/components/Login.js', 'src/components/Article/Comment.js', 'src/components/Settings.js', 'src/components/Editor.js']
+[INFO]   [Whitelisted File Context] src/index.js ──► Links: ['./components/App', 'src/store.js', './store']
+[INFO]   [Whitelisted File Context] src/middleware.js ──► Links: ['./constants/actionTypes', 'src/agent.js', 'src/components/Register.js', './agent', 'src/store.js', 'src/constants/actionTypes.js', 'src/components/Login.js']
+[INFO]   [Whitelisted File Context] src/reducer.js ──► Links: ['./reducers/profile', './reducers/settings', './reducers/home', './reducers/article', './reducers/common', 'src/components/Editor.js', './reducers/editor', 'src/reducers/article.js', 'src/reducers/settings.js', 'src/components/Settings.js', './reducers/auth', 'src/reducers/common.js', 'src/reducers/editor.js', 'src/components/ArticleList.js', './reducers/articleList', 'src/reducers/profile.js', 'src/components/Profile.js', 'src/reducers/articleList.js']
+[INFO]   [Whitelisted File Context] src/reducers/article.js ──► Links: ['src/components/Article/Comment.js', '../constants/actionTypes', 'src/constants/actionTypes.js']
+[INFO]   [Whitelisted File Context] src/reducers/articleList.js ──► Links: ['src/reducers/profile.js', 'src/reducers/article.js', 'src/constants/actionTypes.js', '../constants/actionTypes', 'src/components/Profile.js']
+[INFO]   [Whitelisted File Context] src/reducers/auth.js ──► Links: ['src/constants/actionTypes.js', '../constants/actionTypes', 'src/components/Register.js', 'src/components/Login.js']
+[INFO]   [Whitelisted File Context] src/reducers/common.js ──► Links: ['src/reducers/profile.js', 'src/components/Register.js', 'src/reducers/editor.js', 'src/reducers/article.js', 'src/reducers/settings.js', 'src/constants/actionTypes.js', '../constants/actionTypes', 'src/components/Profile.js', 'src/components/Login.js', 'src/components/Settings.js', 'src/components/Editor.js']
+[INFO]   [Whitelisted File Context] src/reducers/editor.js ──► Links: ['src/constants/actionTypes.js', '../constants/actionTypes', 'src/components/Editor.js', 'src/reducers/article.js']
+[INFO]   [Whitelisted File Context] src/reducers/home.js ──► Links: ['src/constants/actionTypes.js', '../constants/actionTypes']
+[INFO]   [Whitelisted File Context] src/reducers/profile.js ──► Links: ['src/constants/actionTypes.js', '../constants/actionTypes', 'src/components/Profile.js']
+[INFO]   [Whitelisted File Context] src/reducers/settings.js ──► Links: ['src/constants/actionTypes.js', 'src/components/Settings.js', '../constants/actionTypes']
+[INFO]   [Whitelisted File Context] src/store.js ──► Links: ['src/reducer.js', 'redux-devtools-extension/developmentOnly', './reducer', './middleware', 'src/middleware.js', 'history/createBrowserHistory']
+[INFO] SUCCESS: Exported Whitelisted Intra-Repo dependency map to: C:\New folder\Delivery Infusion\HP\Java\rca\intra_repo_dep_tree_react-redux-realworld-example-app.json
+[INFO] --- [PHASE 1] Processing Repository: node-express-realworld-example-app (Branch: master) ---
+[INFO] Phase 1 - Step 1 [node-express-realworld-example-app]: Fetching supported languages for repository SCpradhan/node-express-realworld-example-app...
+[INFO] [node-express-realworld-example-app] Detected languages from GitHub: ['TypeScript', 'Dockerfile', 'JavaScript']
+[INFO] Phase 1 - Step 2 [node-express-realworld-example-app]: Mapping language signatures to standard target extensions...
+[INFO] [node-express-realworld-example-app] Matched language [TypeScript] -> Registered extensions: ['.ts', '.tsx']
+[WARNING] [node-express-realworld-example-app] Language [Dockerfile] not present in standard target table. Discarding.
+[INFO] [node-express-realworld-example-app] Matched language [JavaScript] -> Registered extensions: ['.js', '.jsx', '.mjs', '.cjs']
+[INFO] [node-express-realworld-example-app] Final targeting extension whitelist: ['.js', '.tsx', '.mjs', '.cjs', '.ts', '.jsx']
+[INFO] [node-express-realworld-example-app] Optimizing context pull: Downloading full repository zip archive...
+[INFO] --- Phase 1 - Step 3 [node-express-realworld-example-app]: Generating Language-Aware Intra-Repo Dependency Tree (Whitelisted Extensions Only) ---
+[INFO]   [Whitelisted File Context] e2e/jest.config.ts ──► Links: ['e2e/src/support/global-setup.ts', 'e2e/src/support/test-setup.ts', 'e2e/src/support/global-teardown.ts']
+[INFO]   [Whitelisted File Context] src/app/routes/article/article.controller.ts ──► Links: ['./article.service', 'src/tests/services/article.service.test.ts', 'src/app/routes/article/article.mapper.ts', 'src/app/routes/article/comment.model.ts', 'src/app/routes/article/author.mapper.ts', 'src/app/routes/article/article.service.ts', '../auth/auth', 'src/app/routes/article/article.model.ts']
+[INFO]   [Whitelisted File Context] src/app/routes/article/article.mapper.ts ──► Links: ['src/tests/services/article.service.test.ts', 'src/app/routes/article/author.mapper.ts', './author.mapper', 'src/app/routes/article/article.controller.ts', 'src/app/routes/article/article.service.ts', 'src/app/routes/article/article.model.ts']
+[INFO]   [Whitelisted File Context] src/app/routes/article/article.model.ts ──► Links: ['src/tests/services/article.service.test.ts', 'src/app/routes/article/article.mapper.ts', 'src/app/routes/article/comment.model.ts', './comment.model', 'src/app/routes/article/article.controller.ts', 'src/app/routes/article/article.service.ts']
+[INFO]   [Whitelisted File Context] src/app/routes/article/article.service.ts ──► Links: ['src/app/models/http-exception.model.ts', 'src/app/routes/article/article.mapper.ts', 'src/app/routes/article/comment.model.ts', 'src/prisma/prisma-client.ts', 'src/app/routes/profile/profile.model.ts', 'src/app/routes/profile/profile.service.ts', 'src/app/routes/article/article.model.ts', 'src/tests/services/article.service.test.ts', '../../../prisma/prisma-client', './article.mapper', '../profile/profile.utils', 'src/tests/services/profile.service.test.ts', 'src/app/routes/article/article.controller.ts', 'src/app/routes/profile/profile.controller.ts', '../tag/tag.model', '../../models/http-exception.model', 'src/app/routes/profile/profile.utils.ts', 'src/app/routes/article/author.mapper.ts', 'src/tests/utils/profile.utils.test.ts']
+[INFO]   [Whitelisted File Context] src/app/routes/article/author.mapper.ts ──► Links: ['../auth/user.model']
+[INFO]   [Whitelisted File Context] src/app/routes/article/comment.model.ts ──► Links: ['src/tests/services/article.service.test.ts', 'src/app/routes/article/article.mapper.ts', 'src/app/routes/article/article.controller.ts', './article.model', 'src/app/routes/article/article.service.ts', 'src/app/routes/article/article.model.ts']
+[INFO]   [Whitelisted File Context] src/app/routes/auth/auth.controller.ts ──► Links: ['./auth', './auth.service']
+[INFO]   [Whitelisted File Context] src/app/routes/auth/auth.service.ts ──► Links: ['src/app/routes/auth/registered-user.model.ts', 'src/app/models/http-exception.model.ts', './registered-user.model', 'src/app/routes/auth/register-input.model.ts', '../../../prisma/prisma-client', 'src/prisma/prisma-client.ts', './user.model', './token.utils', 'src/app/routes/auth/token.utils.ts', '../../models/http-exception.model', './register-input.model']
+[INFO]   [Whitelisted File Context] src/app/routes/auth/auth.ts ──► Links: ['src/app/routes/article/author.mapper.ts', 'src/app/routes/auth/token.utils.ts']
+[INFO]   [Whitelisted File Context] src/app/routes/auth/registered-user.model.ts ──► Links: ['src/app/routes/auth/token.utils.ts']
+[INFO]   [Whitelisted File Context] src/app/routes/auth/user.model.ts ──► Links: ['src/tests/services/article.service.test.ts', '../article/article.model', 'src/app/routes/article/article.mapper.ts', 'src/app/routes/article/comment.model.ts', 'src/app/routes/article/article.controller.ts', '../article/comment.model', 'src/app/routes/article/article.service.ts', 'src/app/routes/article/article.model.ts']
+[INFO]   [Whitelisted File Context] src/app/routes/profile/profile.controller.ts ──► Links: ['src/app/routes/profile/profile.utils.ts', 'src/tests/utils/profile.utils.test.ts', 'src/app/routes/profile/profile.service.ts', 'src/tests/services/profile.service.test.ts', 'src/app/routes/profile/profile.model.ts', './profile.service', '../auth/auth']
+[INFO]   [Whitelisted File Context] src/app/routes/profile/profile.model.ts ──► Links: ['src/app/routes/profile/profile.utils.ts', 'src/tests/utils/profile.utils.test.ts', 'src/app/routes/profile/profile.service.ts', 'src/tests/services/profile.service.test.ts', 'src/app/routes/profile/profile.controller.ts']
+[INFO]   [Whitelisted File Context] src/app/routes/profile/profile.service.ts ──► Links: ['src/app/routes/profile/profile.utils.ts', 'src/app/models/http-exception.model.ts', 'src/tests/utils/profile.utils.test.ts', './profile.utils', '../../../prisma/prisma-client', 'src/prisma/prisma-client.ts', 'src/tests/services/profile.service.test.ts', 'src/app/routes/profile/profile.model.ts', 'src/app/routes/profile/profile.controller.ts', '../../models/http-exception.model']
+[INFO]   [Whitelisted File Context] src/app/routes/profile/profile.utils.ts ──► Links: ['./profile.model', 'src/tests/utils/profile.utils.test.ts', 'src/app/routes/profile/profile.service.ts', 'src/tests/services/profile.service.test.ts', 'src/app/routes/profile/profile.model.ts', 'src/app/routes/profile/profile.controller.ts', '../auth/user.model']
+[INFO]   [Whitelisted File Context] src/app/routes/routes.ts ──► Links: ['src/app/routes/profile/profile.utils.ts', './profile/profile.controller', 'src/tests/services/article.service.test.ts', 'src/app/routes/article/article.mapper.ts', './tag/tag.controller', 'src/tests/utils/profile.utils.test.ts', 'src/app/routes/article/article.service.ts', 'src/app/routes/profile/profile.service.ts', 'src/tests/services/profile.service.test.ts', './article/article.controller', 'src/app/routes/article/article.controller.ts', 'src/app/routes/profile/profile.controller.ts', 'src/app/routes/profile/profile.model.ts', './auth/auth.controller', 'src/app/routes/article/article.model.ts']
+[INFO]   [Whitelisted File Context] src/app/routes/tag/tag.controller.ts ──► Links: ['./tag.service', '../auth/auth']
+[INFO]   [Whitelisted File Context] src/app/routes/tag/tag.service.ts ──► Links: ['src/tests/services/article.service.test.ts', 'src/app/routes/article/article.mapper.ts', 'src/app/routes/article/author.mapper.ts', '../../../prisma/prisma-client', 'src/prisma/prisma-client.ts', 'src/app/routes/article/article.controller.ts', './tag.model', 'src/app/routes/article/article.service.ts', 'src/app/routes/article/article.model.ts']
+[INFO]   [Whitelisted File Context] src/main.ts ──► Links: ['src/app/routes/routes.ts', './app/models/http-exception.model', 'src/app/models/http-exception.model.ts', 'src/app/routes/article/author.mapper.ts', 'e2e/src/server/server.spec.ts', './app/routes/routes']
+[INFO]   [Whitelisted File Context] src/prisma/prisma-client.ts ──► Links: ['@prisma/client']
+[INFO]   [Whitelisted File Context] src/prisma/seed.ts ──► Links: ['../app/routes/auth/auth.service', 'src/app/routes/auth/registered-user.model.ts', 'src/app/routes/routes.ts', 'src/tests/services/article.service.test.ts', '@prisma/client', 'src/app/routes/article/article.mapper.ts', 'src/app/routes/article/comment.model.ts', '@ngneat/falso', '../app/routes/auth/registered-user.model', 'src/app/routes/article/article.controller.ts', '../app/routes/article/article.service', 'src/app/routes/article/article.service.ts', 'src/app/routes/article/article.model.ts']
+[INFO]   [Whitelisted File Context] src/tests/prisma-mock.ts ──► Links: ['@prisma/client', 'src/prisma/prisma-client.ts', '../prisma/prisma-client']
+[INFO]   [Whitelisted File Context] src/tests/services/article.service.test.ts ──► Links: ['src/app/routes/routes.ts', 'src/app/routes/article/article.mapper.ts', 'src/app/routes/article/comment.model.ts', 'src/app/routes/article/author.mapper.ts', '../../app/routes/article/article.service', '../prisma-mock', 'src/tests/prisma-mock.ts', 'src/app/routes/article/article.controller.ts', 'src/app/routes/auth/token.utils.ts', 'src/app/routes/article/article.service.ts', 'src/app/routes/article/article.model.ts']
+[INFO]   [Whitelisted File Context] src/tests/services/auth.service.test.ts ──► Links: ['src/app/routes/routes.ts', '../prisma-mock', '../../app/routes/auth/auth.service', 'src/tests/prisma-mock.ts', 'src/app/routes/auth/token.utils.ts']
+[INFO]   [Whitelisted File Context] src/tests/services/profile.service.test.ts ──► Links: ['src/app/routes/profile/profile.utils.ts', 'src/app/routes/routes.ts', '../../app/routes/profile/profile.service', 'src/tests/utils/profile.utils.test.ts', 'src/app/routes/profile/profile.service.ts', '../prisma-mock', 'src/tests/prisma-mock.ts', 'src/app/routes/profile/profile.model.ts', 'src/app/routes/profile/profile.controller.ts', 'src/app/routes/auth/token.utils.ts']
+[INFO]   [Whitelisted File Context] src/tests/utils/profile.utils.test.ts ──► Links: ['src/app/routes/profile/profile.utils.ts', 'src/app/routes/routes.ts', 'src/app/routes/profile/profile.service.ts', 'src/tests/services/profile.service.test.ts', 'src/app/routes/profile/profile.model.ts', 'src/app/routes/profile/profile.controller.ts', '../../app/routes/profile/profile.utils']
+[INFO] SUCCESS: Exported Whitelisted Intra-Repo dependency map to: C:\New folder\Delivery Infusion\HP\Java\rca\intra_repo_dep_tree_node-express-realworld-example-app.json
+[INFO] 
+---Phase 1 - Step 4 ====== Generating Global Cross-Repo Dependency Tree ================
+[INFO] [Repository Axis] react-redux-realworld-example-app ──► References Workspace Targets: []
+[INFO] [Repository Axis] node-express-realworld-example-app ──► References Workspace Targets: []
+[INFO] SUCCESS: Exported Inter-Repo topology tracking map to: C:\New folder\Delivery Infusion\HP\Java\rca\inter_repo_dep_tree.json
+[INFO] ================ PHASE 2: SEARCH, EXPAND & EXTRACT ================
+[INFO] --- [PHASE 2] Processing Repository: react-redux-realworld-example-app (Branch: master) ---
+[INFO] Phase 2 - Step 1 [react-redux-realworld-example-app]: Sending request to AAVA Search Endpoint (Attempt 1/3)...
+[INFO] [react-redux-realworld-example-app] Successfully retrieved structural payload with 38 records from search.
+[INFO] Phase 2 - Step 2 [react-redux-realworld-example-app]: Evaluating structural records against similarity boundaries (>= 0.01)...
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 10.0311]: src/components/ArticlePreview.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 10.0123]: src/reducers/articleList.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 10.0002]: src/constants/actionTypes.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0294]: src/components/ProfileFavorites.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0290]: src/reducers/common.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0282]: src/reducers/editor.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0272]: src/reducers/auth.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0268]: src/reducers/article.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0268]: src/components/Home/MainView.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0259]: src/components/Article/Comment.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0257]: src/components/Article/ArticleActions.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0253]: src/components/Home/Tags.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0252]: src/components/Profile.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0252]: src/reducer.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0248]: src/components/Home/index.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0242]: src/middleware.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0236]: src/reducers/settings.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0233]: src/components/Article/index.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0232]: src/components/Article/ArticleMeta.js
+[INFO] [react-redux-realworld-example-app] Accepted path [Similarity: 0.0220]: src/components/Register.js
+[INFO] [react-redux-realworld-example-app] Extracted 20 completely unique candidate filepath locations.
+[INFO] Phase 2 - Step 3 [react-redux-realworld-example-app]: Filtering paths matching targeting extension whitelist...
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/components/ArticlePreview.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/reducers/articleList.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/constants/actionTypes.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/components/ProfileFavorites.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/reducers/common.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/reducers/editor.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/reducers/auth.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/reducers/article.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/components/Home/MainView.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/components/Article/Comment.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/components/Article/ArticleActions.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/components/Home/Tags.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/components/Profile.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/reducer.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/components/Home/index.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/middleware.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/reducers/settings.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/components/Article/index.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/components/Article/ArticleMeta.js]
+[INFO] [react-redux-realworld-example-app] Retained path allocation target matching runtime criteria: [src/components/Register.js]
+[INFO] Phase 2 - Step 3 Completed [react-redux-realworld-example-app]: Consolidated 20 paths for source code payload downstream consumption.
+[INFO] --- Phase 2 - Step 4 [Expansion]: Looking up dependencies for 'react-redux-realworld-example-app' ---
+[INFO] [react-redux-realworld-example-app] Expanding [src/components/ArticlePreview.js] with 5 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/reducers/articleList.js] with 5 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/constants/actionTypes.js] with 10 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/components/ProfileFavorites.js] with 8 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/reducers/common.js] with 11 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/reducers/editor.js] with 4 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/reducers/auth.js] with 4 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/reducers/article.js] with 3 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/components/Home/MainView.js] with 9 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/components/Article/Comment.js] with 2 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/components/Article/ArticleActions.js] with 7 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/components/Home/Tags.js] with 3 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/components/Profile.js] with 12 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/reducer.js] with 18 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/components/Home/index.js] with 11 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/middleware.js] with 7 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/reducers/settings.js] with 3 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/components/Article/index.js] with 12 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/components/Article/ArticleMeta.js] with 3 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Expanding [src/components/Register.js] with 7 intra-repo dependencies.
+[INFO] [react-redux-realworld-example-app] Final expanded file count to fetch: 56 (Original Search matches: 20)
+[INFO] Phase 2 - Step 5 [react-redux-realworld-example-app]: Beginning local extraction of source file content payloads from memory zip cache...
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/ArticlePreview.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/ArticlePreview.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/reducers/articleList.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/reducers/articleList.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/constants/actionTypes.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/constants/actionTypes.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/ProfileFavorites.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/ProfileFavorites.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/reducers/common.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/reducers/common.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/reducers/editor.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/reducers/editor.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/reducers/auth.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/reducers/auth.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/reducers/article.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/reducers/article.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/Home/MainView.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/Home/MainView.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/Article/Comment.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/Article/Comment.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/Article/ArticleActions.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/Article/ArticleActions.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/Home/Tags.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/Home/Tags.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/Profile.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/Profile.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/reducer.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/reducer.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/Home/index.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/Home/index.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/middleware.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/middleware.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/reducers/settings.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/reducers/settings.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/Article/index.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/Article/index.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/Article/ArticleMeta.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/Article/ArticleMeta.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/Register.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/Register.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/agent.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/agent.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [../agent]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [../agent]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [../constants/actionTypes]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [../constants/actionTypes]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/reducers/profile.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/reducers/profile.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/Login.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/Login.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/Settings.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/Settings.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/Editor.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/Editor.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./Profile]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./Profile]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [../../constants/actionTypes]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [../../constants/actionTypes]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [../../agent]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [../../agent]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/ArticleList.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/ArticleList.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [../ArticleList]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [../ArticleList]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./DeleteButton]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./DeleteButton]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/Article/DeleteButton.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/Article/DeleteButton.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./ArticleList]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./ArticleList]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./reducers/profile]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./reducers/profile]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./reducers/settings]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./reducers/settings]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./reducers/home]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./reducers/home]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./reducers/article]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./reducers/article]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./reducers/common]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./reducers/common]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./reducers/editor]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./reducers/editor]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./reducers/auth]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./reducers/auth]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./reducers/articleList]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./reducers/articleList]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./MainView]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./MainView]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./Tags]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./Tags]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./Banner]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./Banner]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/Home/Banner.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/Home/Banner.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./constants/actionTypes]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./constants/actionTypes]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./agent]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./agent]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/store.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/store.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/Article/CommentContainer.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/Article/CommentContainer.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./CommentContainer]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./CommentContainer]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./ArticleMeta]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./ArticleMeta]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./ArticleActions]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./ArticleActions]: File not found in zip.
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [src/components/ListErrors.js]
+[INFO] [react-redux-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/components/ListErrors.js]
+[INFO] [react-redux-realworld-example-app] Extracting cached content payload context for artifact: [./ListErrors]
+[ERROR] [react-redux-realworld-example-app] Failed to acquire local content stream for asset reference [./ListErrors]: File not found in zip.
+[INFO] Successfully populated 31 objects into tracking matrix structure for repository 'react-redux-realworld-example-app'.
+[INFO] Pacing boundaries active. Pausing operations for 20s to safeguard API Gateway pool context limits...
+[INFO] --- [PHASE 2] Processing Repository: node-express-realworld-example-app (Branch: master) ---
+[INFO] Phase 2 - Step 1 [node-express-realworld-example-app]: Sending request to AAVA Search Endpoint (Attempt 1/3)...
+[INFO] [node-express-realworld-example-app] Successfully retrieved structural payload with 34 records from search.
+[INFO] Phase 2 - Step 2 [node-express-realworld-example-app]: Evaluating structural records against similarity boundaries (>= 0.01)...
+[INFO] [node-express-realworld-example-app] Accepted path [Similarity: 10.0328]: src/app/routes/article/article.controller.ts
+[INFO] [node-express-realworld-example-app] Accepted path [Similarity: 10.0215]: src/tests/services/article.service.test.ts
+[INFO] [node-express-realworld-example-app] Accepted path [Similarity: 0.0301]: src/app/routes/article/article.service.ts
+[INFO] [node-express-realworld-example-app] Accepted path [Similarity: 0.0299]: src/prisma/migrations/20210924225358_initial/migration.sql
+[INFO] [node-express-realworld-example-app] Accepted path [Similarity: 0.0294]: src/app/routes/article/article.mapper.ts
+[INFO] [node-express-realworld-example-app] Accepted path [Similarity: 0.0274]: src/prisma/migrations/20211001143221_implicit_tags/migration.sql
+[INFO] [node-express-realworld-example-app] Accepted path [Similarity: 0.0271]: src/app/routes/auth/user.model.ts
+[INFO] [node-express-realworld-example-app] Accepted path [Similarity: 0.0261]: src/app/routes/routes.ts
+[INFO] [node-express-realworld-example-app] Accepted path [Similarity: 0.0257]: src/app/routes/article/article.model.ts
+[INFO] [node-express-realworld-example-app] Accepted path [Similarity: 0.0250]: src/prisma/migrations/20211221184529_deprecated_preview/migration.sql
+[INFO] [node-express-realworld-example-app] Accepted path [Similarity: 0.0244]: src/main.ts
+[INFO] [node-express-realworld-example-app] Accepted path [Similarity: 0.0237]: src/tests/services/profile.service.test.ts
+[INFO] [node-express-realworld-example-app] Accepted path [Similarity: 0.0223]: jest.config.ts
+[INFO] [node-express-realworld-example-app] Accepted path [Similarity: 0.0221]: src/app/routes/article/comment.model.ts
+[INFO] [node-express-realworld-example-app] Accepted path [Similarity: 0.0218]: src/app/routes/auth/registered-user.model.ts
+[INFO] [node-express-realworld-example-app] Accepted path [Similarity: 0.0218]: src/prisma/migrations/20211105153605_api_url/migration.sql
+[INFO] [node-express-realworld-example-app] Extracted 16 completely unique candidate filepath locations.
+[INFO] Phase 2 - Step 3 [node-express-realworld-example-app]: Filtering paths matching targeting extension whitelist...
+[INFO] [node-express-realworld-example-app] Retained path allocation target matching runtime criteria: [src/app/routes/article/article.controller.ts]
+[INFO] [node-express-realworld-example-app] Retained path allocation target matching runtime criteria: [src/tests/services/article.service.test.ts]
+[INFO] [node-express-realworld-example-app] Retained path allocation target matching runtime criteria: [src/app/routes/article/article.service.ts]
+[INFO] [node-express-realworld-example-app] Retained path allocation target matching runtime criteria: [src/app/routes/article/article.mapper.ts]
+[INFO] [node-express-realworld-example-app] Retained path allocation target matching runtime criteria: [src/app/routes/auth/user.model.ts]
+[INFO] [node-express-realworld-example-app] Retained path allocation target matching runtime criteria: [src/app/routes/routes.ts]
+[INFO] [node-express-realworld-example-app] Retained path allocation target matching runtime criteria: [src/app/routes/article/article.model.ts]
+[INFO] [node-express-realworld-example-app] Retained path allocation target matching runtime criteria: [src/main.ts]
+[INFO] [node-express-realworld-example-app] Retained path allocation target matching runtime criteria: [src/tests/services/profile.service.test.ts]
+[INFO] [node-express-realworld-example-app] Retained path allocation target matching runtime criteria: [jest.config.ts]
+[INFO] [node-express-realworld-example-app] Retained path allocation target matching runtime criteria: [src/app/routes/article/comment.model.ts]
+[INFO] [node-express-realworld-example-app] Retained path allocation target matching runtime criteria: [src/app/routes/auth/registered-user.model.ts]
+[INFO] Phase 2 - Step 3 Completed [node-express-realworld-example-app]: Consolidated 12 paths for source code payload downstream consumption.
+[INFO] --- Phase 2 - Step 4 [Expansion]: Looking up dependencies for 'node-express-realworld-example-app' ---
+[INFO] [node-express-realworld-example-app] Expanding [src/app/routes/article/article.controller.ts] with 8 intra-repo dependencies.
+[INFO] [node-express-realworld-example-app] Expanding [src/tests/services/article.service.test.ts] with 11 intra-repo dependencies.
+[INFO] [node-express-realworld-example-app] Expanding [src/app/routes/article/article.service.ts] with 19 intra-repo dependencies.
+[INFO] [node-express-realworld-example-app] Expanding [src/app/routes/article/article.mapper.ts] with 6 intra-repo dependencies.
+[INFO] [node-express-realworld-example-app] Expanding [src/app/routes/auth/user.model.ts] with 8 intra-repo dependencies.
+[INFO] [node-express-realworld-example-app] Expanding [src/app/routes/routes.ts] with 15 intra-repo dependencies.
+[INFO] [node-express-realworld-example-app] Expanding [src/app/routes/article/article.model.ts] with 6 intra-repo dependencies.
+[INFO] [node-express-realworld-example-app] Expanding [src/main.ts] with 6 intra-repo dependencies.
+[INFO] [node-express-realworld-example-app] Expanding [src/tests/services/profile.service.test.ts] with 10 intra-repo dependencies.
+[INFO] [node-express-realworld-example-app] Expanding [src/app/routes/article/comment.model.ts] with 6 intra-repo dependencies.
+[INFO] [node-express-realworld-example-app] Expanding [src/app/routes/auth/registered-user.model.ts] with 1 intra-repo dependencies.
+[INFO] [node-express-realworld-example-app] Final expanded file count to fetch: 44 (Original Search matches: 12)
+[INFO] Phase 2 - Step 5 [node-express-realworld-example-app]: Beginning local extraction of source file content payloads from memory zip cache...
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/app/routes/article/article.controller.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/app/routes/article/article.controller.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/tests/services/article.service.test.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/tests/services/article.service.test.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/app/routes/article/article.service.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/app/routes/article/article.service.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/app/routes/article/article.mapper.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/app/routes/article/article.mapper.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/app/routes/auth/user.model.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/app/routes/auth/user.model.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/app/routes/routes.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/app/routes/routes.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/app/routes/article/article.model.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/app/routes/article/article.model.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/main.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/main.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/tests/services/profile.service.test.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/tests/services/profile.service.test.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [jest.config.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [jest.config.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/app/routes/article/comment.model.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/app/routes/article/comment.model.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/app/routes/auth/registered-user.model.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/app/routes/auth/registered-user.model.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [./article.service]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [./article.service]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/app/routes/article/author.mapper.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/app/routes/article/author.mapper.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [../auth/auth]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [../auth/auth]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [../../app/routes/article/article.service]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [../../app/routes/article/article.service]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [../prisma-mock]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [../prisma-mock]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/tests/prisma-mock.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/tests/prisma-mock.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/app/routes/auth/token.utils.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/app/routes/auth/token.utils.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/app/models/http-exception.model.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/app/models/http-exception.model.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/prisma/prisma-client.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/prisma/prisma-client.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/app/routes/profile/profile.model.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/app/routes/profile/profile.model.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/app/routes/profile/profile.service.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/app/routes/profile/profile.service.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [../../../prisma/prisma-client]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [../../../prisma/prisma-client]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [./article.mapper]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [./article.mapper]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [../profile/profile.utils]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [../profile/profile.utils]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/app/routes/profile/profile.controller.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/app/routes/profile/profile.controller.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [../tag/tag.model]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [../tag/tag.model]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [../../models/http-exception.model]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [../../models/http-exception.model]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/app/routes/profile/profile.utils.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/app/routes/profile/profile.utils.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [src/tests/utils/profile.utils.test.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [src/tests/utils/profile.utils.test.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [./author.mapper]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [./author.mapper]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [../article/article.model]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [../article/article.model]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [../article/comment.model]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [../article/comment.model]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [./profile/profile.controller]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [./profile/profile.controller]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [./tag/tag.controller]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [./tag/tag.controller]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [./article/article.controller]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [./article/article.controller]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [./auth/auth.controller]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [./auth/auth.controller]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [./comment.model]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [./comment.model]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [./app/models/http-exception.model]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [./app/models/http-exception.model]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [e2e/src/server/server.spec.ts]
+[INFO] [node-express-realworld-example-app] Successfully tracked code profile mapping dictionary entry for artifact path: [e2e/src/server/server.spec.ts]
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [./app/routes/routes]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [./app/routes/routes]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [../../app/routes/profile/profile.service]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [../../app/routes/profile/profile.service]: File not found in zip.
+[INFO] [node-express-realworld-example-app] Extracting cached content payload context for artifact: [./article.model]
+[ERROR] [node-express-realworld-example-app] Failed to acquire local content stream for asset reference [./article.model]: File not found in zip.
+[INFO] Successfully populated 23 objects into tracking matrix structure for repository 'node-express-realworld-example-app'.
+[INFO] 
+================ PHASE 3: HIGH LEVEL RCA AGENT (PHASE-3) FILTERING ================
+[INFO] --- Starting Chunking Process for Phase-3 Agent ---
+[INFO] Chunking complete. Created 1 independent code payload chunks.
+[INFO] [Phase-3 Thread 1] Zipping payload and triggering Workflow 18914 (Max 2 Iterations)...
+[INFO] [Phase-3 Thread 1] --- Starting Iteration 1 ---
+[INFO] [Phase-3 Thread 1] Triggered successfully! Execution ID: 8df435f2-95ed-493b-a743-e0ace42a2348. Starting poll...
+[INFO] [Phase-3 Thread 1] Workflow SUCCESS! Parsing JSON output...
+[INFO] [Phase-3 Thread 1] Iteration 1 parsed. Review Score: 75. Impacted files: 7
+[WARNING] [Phase-3 Thread 1] Compliance failed (75 < 90). Feeding back to Agent...
+[INFO] [Phase-3 Thread 1] --- Starting Iteration 2 ---
+[INFO] [Phase-3 Thread 1] Triggered successfully! Execution ID: aef2c1f3-0521-4c59-af2a-fdb8f7fb515f. Starting poll...
+[INFO] [Phase-3 Thread 1] Workflow SUCCESS! Parsing JSON output...
+[INFO] [Phase-3 Thread 1] Iteration 2 parsed. Review Score: 100. Impacted files: 12
+[INFO] [Phase-3 Thread 1] More than 90% compliance reached on iteration 2. Exiting loop.
+[INFO] [Phase-3] Thread 1 completed. Extracted 12 surviving paths with scores.
+[INFO] Phase-3 Complete! Total completely unique surviving paths across all chunks: 12
+[INFO] ================ APPLYING BM25 RANKING (Top 50, Trim: False) ================
+[INFO] BM25 query: Clicking the Favorite / Like button on an article card fails to register the action, causing a frontend UI mismatch or dropping the request due to an unhandled API routing endpoint failure.
+[INFO] [react-redux-realworld-example-app] Preparing 6 files for BM25 scoring.
+[INFO] [node-express-realworld-example-app] Preparing 5 files for BM25 scoring.
+[INFO] BM25 corpus size: 11
+[INFO] BM25 query tokens: ['clicking', 'the', 'favorite', 'like', 'button', 'on', 'an', 'article', 'card', 'fails', 'to', 'register', 'the', 'action', 'causing', 'a', 'frontend', 'ui', 'mismatch', 'or', 'dropping', 'the', 'request', 'due', 'to', 'an', 'unhandled', 'api', 'routing', 'endpoint', 'failure']
+[INFO] BM25 average document length: 281.82
+[INFO] [BM25] Score: 25.9439 | Repo: node-express-realworld-example-app | File: src/app/routes/article/article.controller.ts
+[INFO] [BM25] Relevance Score: 97 | Repo: node-express-realworld-example-app | File: src/app/routes/article/article.controller.ts
+[INFO] [BM25] Score: 10.5869 | Repo: react-redux-realworld-example-app | File: src/components/ArticlePreview.js
+[INFO] [BM25] Relevance Score: 100 | Repo: react-redux-realworld-example-app | File: src/components/ArticlePreview.js
+[INFO] [BM25] Score: 7.3170 | Repo: node-express-realworld-example-app | File: src/main.ts
+[INFO] [BM25] Relevance Score: 72 | Repo: node-express-realworld-example-app | File: src/main.ts
+[INFO] [BM25] Score: 5.7730 | Repo: react-redux-realworld-example-app | File: src/middleware.js
+[INFO] [BM25] Relevance Score: 84 | Repo: react-redux-realworld-example-app | File: src/middleware.js
+[INFO] [BM25] Score: 5.0961 | Repo: react-redux-realworld-example-app | File: src/agent.js
+[INFO] [BM25] Relevance Score: 90 | Repo: react-redux-realworld-example-app | File: src/agent.js
+[INFO] [BM25] Score: 4.7718 | Repo: node-express-realworld-example-app | File: src/app/routes/article/article.service.ts
+[INFO] [BM25] Relevance Score: 95 | Repo: node-express-realworld-example-app | File: src/app/routes/article/article.service.ts
+[INFO] [BM25] Score: 4.5001 | Repo: react-redux-realworld-example-app | File: src/reducers/articleList.js
+[INFO] [BM25] Relevance Score: 92 | Repo: react-redux-realworld-example-app | File: src/reducers/articleList.js
+[INFO] [BM25] Score: 3.2549 | Repo: node-express-realworld-example-app | File: src/app/routes/routes.ts
+[INFO] [BM25] Relevance Score: 78 | Repo: node-express-realworld-example-app | File: src/app/routes/routes.ts
+[INFO] [BM25] Score: 2.0772 | Repo: react-redux-realworld-example-app | File: src/constants/actionTypes.js
+[INFO] [BM25] Relevance Score: 94 | Repo: react-redux-realworld-example-app | File: src/constants/actionTypes.js
+[INFO] [BM25] Score: 0.8220 | Repo: node-express-realworld-example-app | File: src/app/routes/article/article.mapper.ts
+[INFO] [BM25] Relevance Score: 88 | Repo: node-express-realworld-example-app | File: src/app/routes/article/article.mapper.ts
+[INFO] [BM25] Score: 0.7764 | Repo: react-redux-realworld-example-app | File: src/components/ArticleList.js
+[INFO] [BM25] Relevance Score: 89 | Repo: react-redux-realworld-example-app | File: src/components/ArticleList.js
+[INFO] BM25 Ranking complete. Retained top 11 files out of 11.
+[INFO] SUCCESS: Exported filtered impact components configuration (with BM25) to: C:\New folder\Delivery Infusion\HP\Java\rca\filtered_multi_repo_code_impact_code_bm25.json
+[INFO] 
+--- Phase 4: Triggering Deep Level RCA at 50000 tokens (Horizontal Iter: 0) ---
+[INFO] ================ Phase 4, Step 1: Re Organization (Target: 50000 tokens) ================
+[INFO] Phase 4 Complete. Selected 11 files out of 11 total available across 2 repositories.
+[INFO] ================ Phase 4, Step 2: DEEP LEVEL WF CALL (Workflow: 18926) ================
+[INFO] [Phase-4] Triggered successfully! Execution ID: 5b096b92-8590-4455-8026-72564b782b3a. Starting poll...
+[INFO] [Phase-4] Workflow SUCCESS! Parsing JSON output...
+[WARNING] Review Score (60 <= 90) but NO missing files indicated. Retrying at current limit 50000 (Horizontal).
+[INFO] 
+--- Phase 4: Triggering Deep Level RCA at 50000 tokens (Horizontal Iter: 1) ---
+[INFO] ================ Phase 4, Step 1: Re Organization (Target: 50000 tokens) ================
+[INFO] Phase 4 Complete. Selected 11 files out of 11 total available across 2 repositories.
+[INFO] ================ Phase 4, Step 2: DEEP LEVEL WF CALL (Workflow: 18926) ================
+[INFO] [Phase-4] Triggered successfully! Execution ID: 3029327c-b8ca-410d-8579-0e08168365ad. Starting poll...
+[INFO] [Phase-4] Workflow SUCCESS! Parsing JSON output...
+[WARNING] Review Score (65 <= 90) on 2nd horizontal iteration. Max horizontal retries reached. Exiting loop.
+[INFO] Final Deep Level RCA Report exported to: C:\New folder\Delivery Infusion\HP\Java\rca\final_deep_rca_report.json
+[INFO] ================ PHASE 5: AUTOMATED GITHUB PATCHING ================
+[INFO] --- [Phase 5] Processing Repository: react-redux-realworld-example-app ---
+[INFO] Created blob for file: src/components/ArticlePreview.js
+[INFO] Created blob for file: src/reducers/articleList.js
