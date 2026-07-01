@@ -65,7 +65,13 @@ const Articles = {
   update: article =>
     requests.put(`/articles/${article.slug}`, { article: omitSlug(article) }),
   create: article =>
-    requests.post('/articles', { article })
+    requests.post('/articles', { article }),
+  saveDraft: article =>
+    requests.post('/articles', { article: { ...article, published: false } }),
+  updateDraft: article =>
+    requests.put(`/articles/${article.slug}`, { article: { ...omitSlug(article), published: false } }),
+  publish: article =>
+    requests.put(`/articles/${article.slug}`, { article: { ...omitSlug(article), published: true } })
 };
 
 const Comments = {
