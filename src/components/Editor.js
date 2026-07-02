@@ -11,6 +11,8 @@ import {
   UPDATE_FIELD_EDITOR
 } from '../constants/actionTypes';
 
+const TITLE_MAX_LENGTH = 255;
+
 const mapStateToProps = state => ({
   ...state.editor
 });
@@ -108,8 +110,12 @@ class Editor extends React.Component {
                       className="form-control form-control-lg"
                       type="text"
                       placeholder="Article Title"
+                      maxLength={TITLE_MAX_LENGTH}
                       value={this.props.title}
                       onChange={this.changeTitle} />
+                    <small className="text-muted">
+                      {(this.props.title || '').length}/{TITLE_MAX_LENGTH}
+                    </small>
                   </fieldset>
 
                   <fieldset className="form-group">
