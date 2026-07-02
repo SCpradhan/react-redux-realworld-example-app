@@ -76,9 +76,12 @@ const mapDispatchToProps = dispatch => ({
 
 class Profile extends React.Component {
   componentWillMount() {
+    const isUser = this.props.currentUser &&
+      this.props.match.params.username === this.props.currentUser.username;
+
     this.props.onLoad(Promise.all([
       agent.Profile.get(this.props.match.params.username),
-      agent.Articles.byAuthor(this.props.match.params.username)
+      isUser ? agent.Articles.drafts() : agent.Articles.byAuthor(this.props.match.params.username)
     ]));
   }
 
@@ -87,13 +90,16 @@ class Profile extends React.Component {
   }
 
   renderTabs() {
+    const isUser = this.props.currentUser &&
+      this.props.profile.username === this.props.currentUser.username;
+
     return (
       <ul className="nav nav-pills outline-active">
         <li className="nav-item">
           <Link
             className="nav-link active"
             to={`/@${this.props.profile.username}`}>
-            My Articles
+            {isUser ? 'My Drafts' : 'My Articles'}
           </Link>
         </li>
 

@@ -17,6 +17,7 @@ export default (state = {}, action) => {
         title: action.payload ? action.payload.article.title : '',
         description: action.payload ? action.payload.article.description : '',
         body: action.payload ? action.payload.article.body : '',
+        published: action.payload ? action.payload.article.published : true,
         tagInput: '',
         tagList: action.payload ? action.payload.article.tagList : []
       };
@@ -26,7 +27,8 @@ export default (state = {}, action) => {
       return {
         ...state,
         inProgress: null,
-        errors: action.error ? action.payload.errors : null
+        errors: action.error ? action.payload.errors : null,
+        published: action.error ? state.published : action.payload.article.published
       };
     case ASYNC_START:
       if (action.subtype === ARTICLE_SUBMITTED) {

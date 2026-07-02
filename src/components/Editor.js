@@ -52,13 +52,14 @@ class Editor extends React.Component {
       this.props.onRemoveTag(tag);
     };
 
-    this.submitForm = ev => {
+    this.submitForm = published => ev => {
       ev.preventDefault();
       const article = {
         title: this.props.title,
         description: this.props.description,
         body: this.props.body,
-        tagList: this.props.tagList
+        tagList: this.props.tagList,
+        published
       };
 
       const slug = { slug: this.props.articleSlug };
@@ -92,6 +93,9 @@ class Editor extends React.Component {
   }
 
   render() {
+    const statusLabel = this.props.published ? 'Published' : 'Draft';
+    const statusClass = this.props.published ? 'tag-default tag-pill' : 'tag-default tag-pill tag-outline';
+
     return (
       <div className="editor-page">
         <div className="container page">
@@ -102,6 +106,10 @@ class Editor extends React.Component {
 
               <form>
                 <fieldset>
+
+                  <div className="form-group">
+                    <span className={statusClass}>Status: {statusLabel}</span>
+                  </div>
 
                   <fieldset className="form-group">
                     <input
@@ -160,8 +168,17 @@ class Editor extends React.Component {
                     className="btn btn-lg pull-xs-right btn-primary"
                     type="button"
                     disabled={this.props.inProgress}
-                    onClick={this.submitForm}>
+                    onClick={this.submitForm(true)}>
                     Publish Article
+                  </button>
+
+                  <button
+                    className="btn btn-lg pull-xs-right btn-outline-secondary"
+                    type="button"
+                    disabled={this.props.inProgress}
+                    onClick={this.submitForm(false)}
+                    style={{ marginRight: '10px' }}>
+                    Save as Draft
                   </button>
 
                 </fieldset>
