@@ -1,10 +1,15 @@
-import ArticleMeta from './ArticleMeta';
-import CommentContainer from './CommentContainer';
 import React from 'react';
 import agent from '../../agent';
 import { connect } from 'react-redux';
 import marked from 'marked';
-import { ARTICLE_PAGE_LOADED, ARTICLE_PAGE_UNLOADED } from '../../constants/actionTypes';
+
+import {
+  ARTICLE_PAGE_LOADED,
+  ARTICLE_PAGE_UNLOADED,
+  ADD_COMMENT
+} from '../../constants/actionTypes';
+import ArticleMeta from './ArticleMeta';
+import CommentContainer from './CommentContainer';
 
 const mapStateToProps = state => ({
   ...state.article,
@@ -15,7 +20,9 @@ const mapDispatchToProps = dispatch => ({
   onLoad: payload =>
     dispatch({ type: ARTICLE_PAGE_LOADED, payload }),
   onUnload: () =>
-    dispatch({ type: ARTICLE_PAGE_UNLOADED })
+    dispatch({ type: ARTICLE_PAGE_UNLOADED }),
+  onAddComment: (payload) =>
+    dispatch({ type: ADD_COMMENT, payload })
 });
 
 class Article extends React.Component {
@@ -55,8 +62,7 @@ class Article extends React.Component {
         <div className="container page">
 
           <div className="row article-content">
-            <div className="col-xs-12">
-
+            <div className="col-md-12">
               <div dangerouslySetInnerHTML={markup}></div>
 
               <ul className="tag-list">
@@ -72,23 +78,29 @@ class Article extends React.Component {
                   })
                 }
               </ul>
-
             </div>
           </div>
 
           <hr />
 
           <div className="article-actions">
+            <ArticleMeta
+              article={this.props.article}
+              canModify={canModify} />
           </div>
 
           <div className="row">
-            <CommentContainer
-              comments={this.props.comments || []}
-              errors={this.props.commentErrors}
-              slug={this.props.match.params.id}
-              currentUser={this.props.currentUser} />
+            <div className="col-xs-12 col-md-8 offset-md-2">
+              <CommentContainer
+                comments={this.props.comments}
+                commentErrors={this.props.commentErrors}
+                slug={this.props.match.params.id}
+                currentUser={this.props.currentUser} />
+            </div>
           </div>
+
         </div>
+
       </div>
     );
   }

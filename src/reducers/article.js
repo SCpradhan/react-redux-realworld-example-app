@@ -11,7 +11,8 @@ export default (state = {}, action) => {
       return {
         ...state,
         article: action.payload[0].article,
-        comments: action.payload[1].comments
+        comments: action.payload[1].comments,
+        commentErrors: null
       };
     case ARTICLE_PAGE_UNLOADED:
       return {};
@@ -24,9 +25,17 @@ export default (state = {}, action) => {
           (state.comments || []).concat([action.payload.comment])
       };
     case DELETE_COMMENT:
+      if (action.error) {
+        return {
+          ...state,
+          commentErrors: action.payload && action.payload.errors ? action.payload.errors : { forbidden: ['You are not authorized to delete this comment'] }
+        };
+      }
+
       const commentId = action.commentId
       return {
         ...state,
+        commentErrors: null,
         comments: state.comments.filter(comment => comment.id !== commentId)
       };
     default:
