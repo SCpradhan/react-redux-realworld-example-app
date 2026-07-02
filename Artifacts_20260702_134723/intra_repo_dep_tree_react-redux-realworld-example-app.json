@@ -1,0 +1,333 @@
+{
+    "package.json": [
+        "src/agent.js"
+    ],
+    "public/index.html": [],
+    "src/agent.js": [
+        "src/reducers/profile.js",
+        "src/reducers/article.js",
+        "src/components/Article/Comment.js",
+        "src/components/Profile.js",
+        "src/components/Login.js",
+        "src/components/Register.js"
+    ],
+    "src/components/App.js": [
+        "src/store.js",
+        "../constants/actionTypes",
+        "../components/Profile",
+        "src/reducers/common.js",
+        "src/agent.js",
+        "../components/Login",
+        "../components/Article",
+        "src/components/Register.js",
+        "src/reducers/profile.js",
+        "../components/Settings",
+        "../agent",
+        "../components/Home",
+        "src/components/Header.js",
+        "src/components/Login.js",
+        "../components/Editor",
+        "../components/ProfileFavorites",
+        "../store",
+        "src/components/Editor.js",
+        "src/reducers/editor.js",
+        "src/components/Settings.js",
+        "src/reducers/article.js",
+        "src/reducers/settings.js",
+        "./Header",
+        "src/components/Profile.js",
+        "../components/Register",
+        "src/constants/actionTypes.js",
+        "src/components/ProfileFavorites.js"
+    ],
+    "src/components/Article/ArticleActions.js": [
+        "../../agent",
+        "../../constants/actionTypes",
+        "src/reducers/article.js",
+        "src/components/Editor.js",
+        "src/reducers/editor.js",
+        "src/agent.js",
+        "src/constants/actionTypes.js"
+    ],
+    "src/components/Article/ArticleMeta.js": [
+        "./ArticleActions",
+        "src/reducers/article.js",
+        "src/components/Article/ArticleActions.js"
+    ],
+    "src/components/Article/Comment.js": [
+        "src/components/Article/DeleteButton.js",
+        "./DeleteButton"
+    ],
+    "src/components/Article/CommentContainer.js": [
+        "./CommentList",
+        "src/components/Article/CommentList.js",
+        "src/reducers/article.js",
+        "src/components/Article/CommentInput.js",
+        "src/components/Article/Comment.js",
+        "./CommentInput",
+        "src/components/Login.js",
+        "src/components/Register.js"
+    ],
+    "src/components/Article/CommentInput.js": [
+        "../../agent",
+        "../../constants/actionTypes",
+        "src/components/Article/Comment.js",
+        "src/agent.js",
+        "src/constants/actionTypes.js"
+    ],
+    "src/components/Article/CommentList.js": [
+        "src/components/Article/Comment.js",
+        "./Comment"
+    ],
+    "src/components/Article/DeleteButton.js": [
+        "../../agent",
+        "../../constants/actionTypes",
+        "src/components/Article/Comment.js",
+        "src/agent.js",
+        "src/constants/actionTypes.js"
+    ],
+    "src/components/Article/index.js": [
+        "../../agent",
+        "./CommentContainer",
+        "src/components/Article/ArticleMeta.js",
+        "../../constants/actionTypes",
+        "src/components/Article/CommentContainer.js",
+        "src/reducers/article.js",
+        "./ArticleMeta",
+        "src/components/Article/Comment.js",
+        "src/reducers/common.js",
+        "src/agent.js",
+        "src/constants/actionTypes.js",
+        "src/components/Home/Banner.js"
+    ],
+    "src/components/ArticleList.js": [
+        "./ArticlePreview",
+        "src/components/ListPagination.js",
+        "src/reducers/article.js",
+        "src/reducers/articleList.js",
+        "src/components/ArticlePreview.js",
+        "./ListPagination"
+    ],
+    "src/components/ArticlePreview.js": [
+        "src/reducers/article.js",
+        "../constants/actionTypes",
+        "src/agent.js",
+        "../agent",
+        "src/constants/actionTypes.js"
+    ],
+    "src/components/Editor.js": [
+        "src/components/ListErrors.js",
+        "src/reducers/article.js",
+        "./ListErrors",
+        "../constants/actionTypes",
+        "src/reducers/editor.js",
+        "src/agent.js",
+        "../agent",
+        "src/constants/actionTypes.js"
+    ],
+    "src/components/Header.js": [
+        "src/components/Settings.js",
+        "src/reducers/settings.js",
+        "src/components/Editor.js",
+        "src/reducers/editor.js",
+        "src/components/Login.js",
+        "src/components/Register.js"
+    ],
+    "src/components/Home/Banner.js": [],
+    "src/components/Home/MainView.js": [
+        "../../agent",
+        "../../constants/actionTypes",
+        "src/reducers/article.js",
+        "src/reducers/articleList.js",
+        "src/reducers/common.js",
+        "src/agent.js",
+        "src/components/ArticleList.js",
+        "src/constants/actionTypes.js",
+        "../ArticleList"
+    ],
+    "src/components/Home/Tags.js": [
+        "../../agent",
+        "src/agent.js",
+        "src/reducers/article.js"
+    ],
+    "src/components/Home/index.js": [
+        "./Tags",
+        "../../agent",
+        "../../constants/actionTypes",
+        "./Banner",
+        "src/reducers/article.js",
+        "src/components/Home/MainView.js",
+        "src/reducers/common.js",
+        "src/agent.js",
+        "src/constants/actionTypes.js",
+        "./MainView",
+        "src/components/Home/Banner.js"
+    ],
+    "src/components/ListErrors.js": [],
+    "src/components/ListPagination.js": [
+        "src/reducers/article.js",
+        "../constants/actionTypes",
+        "src/agent.js",
+        "../agent",
+        "src/constants/actionTypes.js"
+    ],
+    "src/components/Login.js": [
+        "src/components/ListErrors.js",
+        "./ListErrors",
+        "../constants/actionTypes",
+        "src/agent.js",
+        "../agent",
+        "src/constants/actionTypes.js",
+        "src/components/Register.js"
+    ],
+    "src/components/Profile.js": [
+        "src/reducers/profile.js",
+        "src/components/Settings.js",
+        "src/reducers/article.js",
+        "src/reducers/settings.js",
+        "../constants/actionTypes",
+        "src/reducers/articleList.js",
+        "src/reducers/common.js",
+        "src/agent.js",
+        "src/components/ArticleList.js",
+        "../agent",
+        "src/constants/actionTypes.js",
+        "./ArticleList"
+    ],
+    "src/components/ProfileFavorites.js": [
+        "src/reducers/profile.js",
+        "src/reducers/article.js",
+        "./Profile",
+        "../constants/actionTypes",
+        "src/components/Profile.js",
+        "src/agent.js",
+        "../agent",
+        "src/constants/actionTypes.js"
+    ],
+    "src/components/Register.js": [
+        "src/components/ListErrors.js",
+        "./ListErrors",
+        "../constants/actionTypes",
+        "src/agent.js",
+        "src/components/Login.js",
+        "../agent",
+        "src/constants/actionTypes.js"
+    ],
+    "src/components/Settings.js": [
+        "src/reducers/profile.js",
+        "src/components/ListErrors.js",
+        "src/reducers/settings.js",
+        "./ListErrors",
+        "../constants/actionTypes",
+        "src/reducers/common.js",
+        "src/components/Profile.js",
+        "src/agent.js",
+        "../agent",
+        "src/constants/actionTypes.js"
+    ],
+    "src/constants/actionTypes.js": [
+        "src/reducers/profile.js",
+        "src/reducers/article.js",
+        "src/reducers/settings.js",
+        "src/components/Article/Comment.js",
+        "src/components/Editor.js",
+        "src/components/Profile.js",
+        "src/reducers/editor.js",
+        "src/components/Login.js",
+        "src/components/Register.js",
+        "src/components/Settings.js"
+    ],
+    "src/index.js": [
+        "src/store.js",
+        "./components/App",
+        "./store"
+    ],
+    "src/middleware.js": [
+        "src/store.js",
+        "src/agent.js",
+        "src/components/Login.js",
+        "./constants/actionTypes",
+        "./agent",
+        "src/constants/actionTypes.js",
+        "src/components/Register.js"
+    ],
+    "src/reducer.js": [
+        "src/reducers/common.js",
+        "./reducers/common",
+        "src/reducers/profile.js",
+        "./reducers/settings",
+        "./reducers/auth",
+        "src/reducers/articleList.js",
+        "src/components/Editor.js",
+        "src/reducers/editor.js",
+        "src/components/Settings.js",
+        "./reducers/editor",
+        "./reducers/profile",
+        "src/reducers/article.js",
+        "./reducers/articleList",
+        "src/reducers/settings.js",
+        "./reducers/article",
+        "src/components/Profile.js",
+        "src/components/ArticleList.js",
+        "./reducers/home"
+    ],
+    "src/reducers/article.js": [
+        "src/components/Article/Comment.js",
+        "../constants/actionTypes",
+        "src/constants/actionTypes.js"
+    ],
+    "src/reducers/articleList.js": [
+        "src/reducers/profile.js",
+        "src/reducers/article.js",
+        "../constants/actionTypes",
+        "src/components/Profile.js",
+        "src/constants/actionTypes.js"
+    ],
+    "src/reducers/auth.js": [
+        "../constants/actionTypes",
+        "src/components/Register.js",
+        "src/components/Login.js",
+        "src/constants/actionTypes.js"
+    ],
+    "src/reducers/common.js": [
+        "src/reducers/profile.js",
+        "src/reducers/article.js",
+        "src/reducers/settings.js",
+        "../constants/actionTypes",
+        "src/components/Editor.js",
+        "src/reducers/editor.js",
+        "src/components/Profile.js",
+        "src/components/Login.js",
+        "src/constants/actionTypes.js",
+        "src/components/Register.js",
+        "src/components/Settings.js"
+    ],
+    "src/reducers/editor.js": [
+        "src/components/Editor.js",
+        "../constants/actionTypes",
+        "src/reducers/article.js",
+        "src/constants/actionTypes.js"
+    ],
+    "src/reducers/home.js": [
+        "../constants/actionTypes",
+        "src/constants/actionTypes.js"
+    ],
+    "src/reducers/profile.js": [
+        "../constants/actionTypes",
+        "src/components/Profile.js",
+        "src/constants/actionTypes.js"
+    ],
+    "src/reducers/settings.js": [
+        "../constants/actionTypes",
+        "src/constants/actionTypes.js",
+        "src/components/Settings.js"
+    ],
+    "src/store.js": [
+        "src/middleware.js",
+        "src/reducer.js",
+        "history/createBrowserHistory",
+        "redux-devtools-extension/developmentOnly",
+        "./reducer",
+        "./middleware"
+    ]
+}
