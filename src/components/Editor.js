@@ -11,6 +11,8 @@ import {
   UPDATE_FIELD_EDITOR
 } from '../constants/actionTypes';
 
+const MAX_ARTICLE_TITLE_LENGTH = 255;
+
 const mapStateToProps = state => ({
   ...state.editor
 });
@@ -92,6 +94,9 @@ class Editor extends React.Component {
   }
 
   render() {
+    const titleLength = (this.props.title || '').length;
+    const isTitleTooLong = titleLength > MAX_ARTICLE_TITLE_LENGTH;
+
     return (
       <div className="editor-page">
         <div className="container page">
@@ -109,7 +114,16 @@ class Editor extends React.Component {
                       type="text"
                       placeholder="Article Title"
                       value={this.props.title}
+                      maxLength={MAX_ARTICLE_TITLE_LENGTH}
                       onChange={this.changeTitle} />
+                    <small className="text-muted">
+                      {titleLength}/{MAX_ARTICLE_TITLE_LENGTH}
+                    </small>
+                    {isTitleTooLong ? (
+                      <ul className="error-messages">
+                        <li>title is too long (maximum is {MAX_ARTICLE_TITLE_LENGTH} characters)</li>
+                      </ul>
+                    ) : null}
                   </fieldset>
 
                   <fieldset className="form-group">
@@ -159,7 +173,7 @@ class Editor extends React.Component {
                   <button
                     className="btn btn-lg pull-xs-right btn-primary"
                     type="button"
-                    disabled={this.props.inProgress}
+                    disabled={this.props.inProgress || isTitleTooLong}
                     onClick={this.submitForm}>
                     Publish Article
                   </button>
