@@ -52,18 +52,19 @@ class Editor extends React.Component {
       this.props.onRemoveTag(tag);
     };
 
-    this.submitForm = ev => {
+    this.submitForm = isDraft => ev => {
       ev.preventDefault();
       const article = {
         title: this.props.title,
         description: this.props.description,
         body: this.props.body,
-        tagList: this.props.tagList
+        tagList: this.props.tagList,
+        isDraft
       };
 
       const slug = { slug: this.props.articleSlug };
       const promise = this.props.articleSlug ?
-        agent.Articles.update(Object.assign(article, slug)) :
+        agent.Articles.update(Object.assign({}, article, slug)) :
         agent.Articles.create(article);
 
       this.props.onSubmit(promise);
@@ -160,8 +161,17 @@ class Editor extends React.Component {
                     className="btn btn-lg pull-xs-right btn-primary"
                     type="button"
                     disabled={this.props.inProgress}
-                    onClick={this.submitForm}>
+                    onClick={this.submitForm(false)}>
                     Publish Article
+                  </button>
+
+                  <button
+                    className="btn btn-lg pull-xs-right btn-outline-secondary"
+                    type="button"
+                    disabled={this.props.inProgress}
+                    onClick={this.submitForm(true)}
+                    style={{ marginRight: '10px' }}>
+                    Save as Draft
                   </button>
 
                 </fieldset>
