@@ -17,6 +17,7 @@ export default (state = {}, action) => {
         title: action.payload ? action.payload.article.title : '',
         description: action.payload ? action.payload.article.description : '',
         body: action.payload ? action.payload.article.body : '',
+        isDraft: action.payload ? action.payload.article.isDraft : false,
         tagInput: '',
         tagList: action.payload ? action.payload.article.tagList : []
       };
