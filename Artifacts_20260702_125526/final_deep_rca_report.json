@@ -1,0 +1,21 @@
+{
+    "code_changes": {
+        "node-express-realworld-example-app/src/prisma/schema.prisma": {
+            "add": null,
+            "modify": {
+                "existing_code": "generator client {\n  provider = \"prisma-client-js\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id          Int       @id @default(autoincrement())\n  email       String    @unique\n  username    String    @unique\n  password    String\n  bio         String?\n  image       String?\n  demo        Boolean   @default(false)\n  articles    Article[]\n  comments    Comment[]\n  following   User[]    @relation(\"UserFollows\")\n  followedBy  User[]    @relation(\"UserFollows\")\n  favorites   Article[] @relation(\"Favorites\")\n}\n\nmodel Article {\n  id           Int       @id @default(autoincrement())\n  slug         String    @unique\n  title        String\n  description  String\n  body         String\n  createdAt    DateTime  @default(now())\n  updatedAt    DateTime  @updatedAt\n  authorId     Int\n  author       User      @relation(fields: [authorId], references: [id])\n  comments     Comment[]\n  tagList      Tag[]\n  favoritedBy  User[]    @relation(\"Favorites\")\n}\n\nmodel Comment {\n  id         Int      @id @default(autoincrement())\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @updatedAt\n  body       String\n  authorId   Int\n  articleId  Int\n  author     User     @relation(fields: [authorId], references: [id])\n  article    Article  @relation(fields: [articleId], references: [id])\n}\n\nmodel Tag {\n  id        Int       @id @default(autoincrement())\n  name      String    @unique\n  articles  Article[]\n}\n",
+                "new_code": "generator client {\n  provider = \"prisma-client-js\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id          Int       @id @default(autoincrement())\n  email       String    @unique\n  username    String    @unique\n  password    String\n  bio         String?\n  image       String?\n  demo        Boolean   @default(false)\n  articles    Article[]\n  comments    Comment[]\n  following   User[]    @relation(\"UserFollows\")\n  followedBy  User[]    @relation(\"UserFollows\")\n  favorites   Article[] @relation(\"Favorites\")\n}\n\nmodel Article {\n  id           Int       @id @default(autoincrement())\n  slug         String    @unique\n  title        String\n  description  String\n  body         String\n  isDraft      Boolean   @default(false)\n  createdAt    DateTime  @default(now())\n  updatedAt    DateTime  @updatedAt\n  authorId     Int\n  author       User      @relation(fields: [authorId], references: [id])\n  comments     Comment[]\n  tagList      Tag[]\n  favoritedBy  User[]    @relation(\"Favorites\")\n}\n\nmodel Comment {\n  id         Int      @id @default(autoincrement())\n  createdAt  DateTime @default(now())\n  updatedAt  DateTime @updatedAt\n  body       String\n  authorId   Int\n  articleId  Int\n  author     User     @relation(fields: [authorId], references: [id])\n  article    Article  @relation(fields: [articleId], references: [id])\n}\n\nmodel Tag {\n  id        Int       @id @default(autoincrement())\n  name      String    @unique\n  articles  Article[]\n}\n"
+            },
+            "delete": null
+        },
+        "node-express-realworld-example-app/src/prisma/migrations/20260702000000_add_draft_support/migration.sql": {
+            "add": {
+                "existing_code": null,
+                "new_code": "ALTER TABLE \"Article\" ADD COLUMN \"isDraft\" BOOLEAN NOT NULL DEFAULT false;\n"
+            },
+            "modify": null,
+            "delete": null
+        }
+    },
+    "coverage_score": 96
+}
