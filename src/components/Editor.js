@@ -52,19 +52,31 @@ class Editor extends React.Component {
       this.props.onRemoveTag(tag);
     };
 
+    this.buildArticle = () => ({
+      title: this.props.title,
+      description: this.props.description,
+      body: this.props.body,
+      tagList: this.props.tagList
+    });
+
     this.submitForm = ev => {
       ev.preventDefault();
-      const article = {
-        title: this.props.title,
-        description: this.props.description,
-        body: this.props.body,
-        tagList: this.props.tagList
-      };
-
+      const article = this.buildArticle();
       const slug = { slug: this.props.articleSlug };
       const promise = this.props.articleSlug ?
         agent.Articles.update(Object.assign(article, slug)) :
         agent.Articles.create(article);
+
+      this.props.onSubmit(promise);
+    };
+
+    this.saveDraft = ev => {
+      ev.preventDefault();
+      const article = this.buildArticle();
+      const slug = { slug: this.props.articleSlug };
+      const promise = this.props.articleSlug ?
+        agent.Articles.updateDraft(Object.assign(article, slug)) :
+        agent.Articles.saveDraft(article);
 
       this.props.onSubmit(promise);
     };
@@ -162,6 +174,15 @@ class Editor extends React.Component {
                     disabled={this.props.inProgress}
                     onClick={this.submitForm}>
                     Publish Article
+                  </button>
+
+                  <button
+                    className="btn btn-lg pull-xs-right btn-outline-secondary"
+                    type="button"
+                    disabled={this.props.inProgress}
+                    onClick={this.saveDraft}
+                    style={{ marginRight: '10px' }}>
+                    Save as Draft
                   </button>
 
                 </fieldset>
