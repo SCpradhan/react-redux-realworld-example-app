@@ -58,7 +58,26 @@ class Editor extends React.Component {
         title: this.props.title,
         description: this.props.description,
         body: this.props.body,
-        tagList: this.props.tagList
+        tagList: this.props.tagList,
+        published: true
+      };
+
+      const slug = { slug: this.props.articleSlug };
+      const promise = this.props.articleSlug ?
+        agent.Articles.update(Object.assign(article, slug)) :
+        agent.Articles.create(article);
+
+      this.props.onSubmit(promise);
+    };
+
+    this.saveDraft = ev => {
+      ev.preventDefault();
+      const article = {
+        title: this.props.title,
+        description: this.props.description,
+        body: this.props.body,
+        tagList: this.props.tagList,
+        published: false
       };
 
       const slug = { slug: this.props.articleSlug };
@@ -162,6 +181,15 @@ class Editor extends React.Component {
                     disabled={this.props.inProgress}
                     onClick={this.submitForm}>
                     Publish Article
+                  </button>
+
+                  <button
+                    className="btn btn-lg pull-xs-right btn-outline-secondary"
+                    type="button"
+                    disabled={this.props.inProgress}
+                    onClick={this.saveDraft}
+                    style={{ marginRight: '10px' }}>
+                    Save as Draft
                   </button>
 
                 </fieldset>

@@ -46,8 +46,8 @@ const omitSlug = article => Object.assign({}, article, { slug: undefined })
 const Articles = {
   all: page =>
     requests.get(`/articles?${limit(10, page)}`),
-  byAuthor: (author, page) =>
-    requests.get(`/articles?author=${encode(author)}&${limit(5, page)}`),
+  byAuthor: (author, page, status) =>
+    requests.get(`/articles?author=${encode(author)}&${limit(5, page)}${status ? `&status=${encode(status)}` : ''}`),
   byTag: (tag, page) =>
     requests.get(`/articles?tag=${encode(tag)}&${limit(10, page)}`),
   del: slug =>
