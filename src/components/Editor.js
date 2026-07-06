@@ -22,8 +22,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch({ type: EDITOR_PAGE_LOADED, payload }),
   onRemoveTag: tag =>
     dispatch({ type: REMOVE_TAG, tag }),
-  onSubmit: payload =>
-    dispatch({ type: ARTICLE_SUBMITTED, payload }),
+  onSubmit: (payload, submissionType) =>
+    dispatch({ type: ARTICLE_SUBMITTED, payload, submissionType }),
   onUnload: payload =>
     dispatch({ type: EDITOR_PAGE_UNLOADED }),
   onUpdateField: (key, value) =>
@@ -52,13 +52,14 @@ class Editor extends React.Component {
       this.props.onRemoveTag(tag);
     };
 
-    this.submitForm = ev => {
+    this.submitForm = isDraft => ev => {
       ev.preventDefault();
       const article = {
         title: this.props.title,
         description: this.props.description,
         body: this.props.body,
-        tagList: this.props.tagList
+        tagList: this.props.tagList,
+        isDraft
       };
 
       const slug = { slug: this.props.articleSlug };
@@ -66,7 +67,7 @@ class Editor extends React.Component {
         agent.Articles.update(Object.assign(article, slug)) :
         agent.Articles.create(article);
 
-      this.props.onSubmit(promise);
+      this.props.onSubmit(promise, isDraft ? 'draft' : 'publish');
     };
   }
 
@@ -160,8 +161,17 @@ class Editor extends React.Component {
                     className="btn btn-lg pull-xs-right btn-primary"
                     type="button"
                     disabled={this.props.inProgress}
-                    onClick={this.submitForm}>
+                    onClick={this.submitForm(false)}>
                     Publish Article
+                  </button>
+
+                  <button
+                    className="btn btn-lg pull-xs-right btn-outline-secondary"
+                    type="button"
+                    disabled={this.props.inProgress}
+                    onClick={this.submitForm(true)}
+                    style={{ marginRight: '10px' }}>
+                    Save as Draft
                   </button>
 
                 </fieldset>
