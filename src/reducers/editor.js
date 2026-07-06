@@ -2,6 +2,7 @@ import {
   EDITOR_PAGE_LOADED,
   EDITOR_PAGE_UNLOADED,
   ARTICLE_SUBMITTED,
+  ARTICLE_DRAFT_SAVED,
   ASYNC_START,
   ADD_TAG,
   REMOVE_TAG,
@@ -17,19 +18,23 @@ export default (state = {}, action) => {
         title: action.payload ? action.payload.article.title : '',
         description: action.payload ? action.payload.article.description : '',
         body: action.payload ? action.payload.article.body : '',
+        isDraft: action.payload ? action.payload.article.isDraft : false,
         tagInput: '',
         tagList: action.payload ? action.payload.article.tagList : []
       };
     case EDITOR_PAGE_UNLOADED:
       return {};
     case ARTICLE_SUBMITTED:
+    case ARTICLE_DRAFT_SAVED:
       return {
         ...state,
         inProgress: null,
+        articleSlug: action.error ? state.articleSlug : action.payload.article.slug,
+        isDraft: action.error ? state.isDraft : action.payload.article.isDraft,
         errors: action.error ? action.payload.errors : null
       };
     case ASYNC_START:
-      if (action.subtype === ARTICLE_SUBMITTED) {
+      if (action.subtype === ARTICLE_SUBMITTED || action.subtype === ARTICLE_DRAFT_SAVED) {
         return { ...state, inProgress: true };
       }
       break;

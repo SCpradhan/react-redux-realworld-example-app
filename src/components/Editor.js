@@ -7,6 +7,7 @@ import {
   EDITOR_PAGE_LOADED,
   REMOVE_TAG,
   ARTICLE_SUBMITTED,
+  ARTICLE_DRAFT_SAVED,
   EDITOR_PAGE_UNLOADED,
   UPDATE_FIELD_EDITOR
 } from '../constants/actionTypes';
@@ -24,6 +25,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch({ type: REMOVE_TAG, tag }),
   onSubmit: payload =>
     dispatch({ type: ARTICLE_SUBMITTED, payload }),
+  onSaveDraft: payload =>
+    dispatch({ type: ARTICLE_DRAFT_SAVED, payload }),
   onUnload: payload =>
     dispatch({ type: EDITOR_PAGE_UNLOADED }),
   onUpdateField: (key, value) =>
@@ -52,14 +55,17 @@ class Editor extends React.Component {
       this.props.onRemoveTag(tag);
     };
 
+    this.buildArticlePayload = isDraft => ({
+      title: this.props.title,
+      description: this.props.description,
+      body: this.props.body,
+      tagList: this.props.tagList,
+      isDraft
+    });
+
     this.submitForm = ev => {
       ev.preventDefault();
-      const article = {
-        title: this.props.title,
-        description: this.props.description,
-        body: this.props.body,
-        tagList: this.props.tagList
-      };
+      const article = this.buildArticlePayload(false);
 
       const slug = { slug: this.props.articleSlug };
       const promise = this.props.articleSlug ?
@@ -67,6 +73,18 @@ class Editor extends React.Component {
         agent.Articles.create(article);
 
       this.props.onSubmit(promise);
+    };
+
+    this.saveDraft = ev => {
+      ev.preventDefault();
+      const article = this.buildArticlePayload(true);
+
+      const slug = { slug: this.props.articleSlug };
+      const promise = this.props.articleSlug ?
+        agent.Articles.update(Object.assign(article, slug)) :
+        agent.Articles.create(article);
+
+      this.props.onSaveDraft(promise);
     };
   }
 
@@ -162,6 +180,15 @@ class Editor extends React.Component {
                     disabled={this.props.inProgress}
                     onClick={this.submitForm}>
                     Publish Article
+                  </button>
+
+                  <button
+                    className="btn btn-lg pull-xs-right btn-outline-secondary"
+                    type="button"
+                    disabled={this.props.inProgress}
+                    onClick={this.saveDraft}
+                    style={{ marginRight: '10px' }}>
+                    Save as Draft
                   </button>
 
                 </fieldset>

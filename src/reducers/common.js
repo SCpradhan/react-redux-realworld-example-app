@@ -3,6 +3,7 @@ import {
   REDIRECT,
   LOGOUT,
   ARTICLE_SUBMITTED,
+  ARTICLE_DRAFT_SAVED,
   SETTINGS_SAVED,
   LOGIN,
   REGISTER,
@@ -39,6 +40,11 @@ export default (state = defaultState, action) => {
     case ARTICLE_SUBMITTED:
       const redirectUrl = `/article/${action.payload.article.slug}`;
       return { ...state, redirectTo: redirectUrl };
+    case ARTICLE_DRAFT_SAVED:
+      return {
+        ...state,
+        redirectTo: action.error ? null : `/editor/${action.payload.article.slug}`
+      };
     case SETTINGS_SAVED:
       return {
         ...state,
