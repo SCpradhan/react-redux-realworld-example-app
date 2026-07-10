@@ -52,13 +52,14 @@ class Editor extends React.Component {
       this.props.onRemoveTag(tag);
     };
 
-    this.submitForm = ev => {
+    this.submitForm = draft => ev => {
       ev.preventDefault();
       const article = {
         title: this.props.title,
         description: this.props.description,
         body: this.props.body,
-        tagList: this.props.tagList
+        tagList: this.props.tagList,
+        draft
       };
 
       const slug = { slug: this.props.articleSlug };
@@ -160,8 +161,16 @@ class Editor extends React.Component {
                     className="btn btn-lg pull-xs-right btn-primary"
                     type="button"
                     disabled={this.props.inProgress}
-                    onClick={this.submitForm}>
+                    onClick={this.submitForm(false)}>
                     Publish Article
+                  </button>
+
+                  <button
+                    className="btn btn-lg pull-xs-right btn-outline-secondary"
+                    type="button"
+                    disabled={this.props.inProgress}
+                    onClick={this.submitForm(true)}>
+                    Save as Draft
                   </button>
 
                 </fieldset>
