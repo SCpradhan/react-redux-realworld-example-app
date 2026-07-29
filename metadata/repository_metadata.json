@@ -1,0 +1,256 @@
+{
+    "src/components/Article/CommentInput.js": {
+        "purpose": "Provides a React component for submitting comments on an article. Manages local state for the comment body text, handles form submission by calling the agent API to create a comment, and dispatches the ADD_COMMENT action to update the Redux store.",
+        "functions": [
+            {
+                "signature": "constructor()",
+                "purpose": "Initializes component state with an empty body string and binds the setBody and createComment methods for handling user input and form submission."
+            },
+            {
+                "signature": "setBody(ev)",
+                "purpose": "Updates the component state with the current value of the textarea input as the user types their comment."
+            },
+            {
+                "signature": "createComment(ev)",
+                "purpose": "Prevents default form submission, calls the agent API to create a comment with the current body text and article slug, clears the input field, and dispatches the result to Redux via onSubmit."
+            },
+            {
+                "signature": "render()",
+                "purpose": "Renders the comment form UI including a textarea for comment input, the current user's avatar image, and a submit button."
+            }
+        ]
+    },
+    "package.json": {
+        "purpose": "Defines the project configuration and dependency manifest for a React-Redux RealWorld example application. Specifies all runtime and development dependencies including React, Redux, routing libraries, and build tooling. Declares npm scripts for starting the development server on port 4100, building production bundles, running tests, and ejecting from create-react-app configuration.",
+        "functions": []
+    },
+    "src/components/App.js": {
+        "purpose": "Serves as the root React component for a Redux-connected real-world example application. Manages application initialization, authentication token handling, route-based navigation, and conditional rendering of the application shell based on load state. Orchestrates Redux state mapping and dispatching for app-level concerns including redirects and initial data loading.",
+        "functions": [
+            {
+                "signature": "componentWillReceiveProps(nextProps)",
+                "purpose": "Handles navigation redirects by dispatching a push action to the router when redirectTo prop changes and clears the redirect state."
+            },
+            {
+                "signature": "componentWillMount()",
+                "purpose": "Initializes the application by retrieving the JWT token from localStorage, setting it on the agent, and dispatching the APP_LOAD action with current user data if authenticated."
+            },
+            {
+                "signature": "render()",
+                "purpose": "Renders the application shell with Header and routing configuration, conditionally displaying full route switch when app is loaded or minimal header during loading."
+            }
+        ]
+    },
+    "src/components/Article/CommentList.js": {
+        "purpose": "Renders a list of comments for an article by mapping over an array of comment objects and rendering individual Comment components. Serves as a presentational container component that passes down props including the current user, article slug, and comment data to each Comment child component.",
+        "functions": [
+            {
+                "signature": "const CommentList = props => {...}",
+                "purpose": "Functional React component that receives props containing comments array, currentUser, and slug, then maps over comments to render a Comment component for each comment with appropriate props and unique key."
+            }
+        ]
+    },
+    "src/components/Article/ArticleMeta.js": {
+        "purpose": "Renders the metadata section for an article display, including author information with avatar and username, article creation date, and action buttons. This component serves as a reusable presentation layer for article header information across the application.",
+        "functions": [
+            {
+                "signature": "const ArticleMeta = props => {...}",
+                "purpose": "Functional React component that accepts article data and canModify flag as props, then renders the complete article metadata UI including author profile link, avatar, username, formatted creation date, and article action controls."
+            }
+        ]
+    },
+    "src/components/Article/CommentContainer.js": {
+        "purpose": "Renders the comment section container for an article page, conditionally displaying either a comment input form for authenticated users or sign-in/sign-up prompts for unauthenticated visitors. Orchestrates the display of existing comments through the CommentList component in both scenarios.",
+        "functions": [
+            {
+                "signature": "const CommentContainer = props => {...}",
+                "purpose": "Main functional component that conditionally renders comment input and list based on user authentication status, accepting props for currentUser, slug, comments, and errors."
+            }
+        ]
+    },
+    "src/components/Article/ArticleActions.js": {
+        "purpose": "Provides action buttons for article management in a React-Redux application. Renders edit and delete buttons for authorized users, dispatching a DELETE_ARTICLE action when the delete button is clicked and routing to the editor for modifications.",
+        "functions": [
+            {
+                "signature": "const mapDispatchToProps = dispatch => ({onClickDelete: payload => dispatch({ type: DELETE_ARTICLE, payload })})",
+                "purpose": "Maps the delete action dispatcher to component props, enabling the component to dispatch DELETE_ARTICLE actions to the Redux store."
+            },
+            {
+                "signature": "const ArticleActions = props => {...}",
+                "purpose": "Renders article action buttons (edit and delete) conditionally based on user permissions, handling delete operations through the agent service."
+            }
+        ]
+    },
+    "public/index.html": {
+        "purpose": "Serves as the main HTML template for the Conduit React application. Provides the root DOM mounting point and includes external stylesheets for fonts and UI components from demo.productionready.io and ionicons.",
+        "functions": []
+    },
+    "src/agent.js": {
+        "purpose": "Provides a centralized HTTP client API layer for the Conduit RealWorld application. Wraps superagent to handle authentication token injection and exposes organized service modules (Auth, Articles, Comments, Profile, Tags) for all backend API interactions with the Conduit API.",
+        "functions": [
+            {
+                "signature": "setToken: _token => { token = _token; }",
+                "purpose": "Sets the authentication token that will be automatically injected into all subsequent HTTP requests via the tokenPlugin middleware."
+            }
+        ]
+    },
+    "src/components/Article/Comment.js": {
+        "purpose": "Renders a single comment component for an article in a React-based social blogging application. Displays comment metadata including author information, creation date, comment body, and conditionally shows a delete button if the current user is the comment author.",
+        "functions": [
+            {
+                "signature": "const Comment = props => {...}",
+                "purpose": "Functional React component that receives comment data, current user information, and article slug as props, then renders the complete comment UI with author profile links and conditional delete functionality."
+            }
+        ]
+    },
+    "src/components/Article/DeleteButton.js": {
+        "purpose": "Provides a React component that renders a delete button for article comments. When clicked, it dispatches a DELETE_COMMENT action with the comment deletion payload from the agent service, enabling users to remove their own comments from articles.",
+        "functions": [
+            {
+                "signature": "const mapDispatchToProps = dispatch => ({onClick: (payload, commentId) => dispatch({ type: DELETE_COMMENT, payload, commentId })})",
+                "purpose": "Maps the onClick handler to dispatch a DELETE_COMMENT action with the provided payload and commentId to the Redux store."
+            },
+            {
+                "signature": "const DeleteButton = props => {...}",
+                "purpose": "Renders a trash icon button that triggers comment deletion when clicked, conditionally displayed based on the show prop."
+            }
+        ]
+    },
+    "src/components/Article/index.js": {
+        "purpose": "Renders the article detail page for a blog/publishing platform, displaying article content with markdown rendering, author metadata, tags, and an embedded comment section. Connects to Redux store to fetch article and comment data on mount via agent API calls and dispatches lifecycle actions for state management.",
+        "functions": [
+            {
+                "signature": "componentWillMount()",
+                "purpose": "Fetches article details and associated comments from the API using the article ID from route parameters and dispatches the data to Redux store."
+            },
+            {
+                "signature": "componentWillUnmount()",
+                "purpose": "Dispatches cleanup action to Redux store when component is unmounted to clear article page state."
+            },
+            {
+                "signature": "render()",
+                "purpose": "Renders the complete article page UI including title, author metadata, markdown-converted article body, tag list, and comment section with conditional edit permissions based on current user."
+            }
+        ]
+    },
+    "src/components/ArticleList.js": {
+        "purpose": "Renders a list of article previews with pagination controls for a content feed. Handles loading states and empty states when no articles are available. Maps through article data to display individual ArticlePreview components.",
+        "functions": [
+            {
+                "signature": "const ArticleList = props => {...}",
+                "purpose": "Main functional component that receives articles array, pager, articlesCount, and currentPage as props and conditionally renders loading state, empty state, or a list of article previews with pagination."
+            }
+        ]
+    },
+    "src/components/Home/Banner.js": {
+        "purpose": "Renders a promotional banner component for the home page of a React application. Conditionally displays the application name and tagline only when the user is not authenticated (no token present). Serves as a welcoming header for anonymous visitors.",
+        "functions": [
+            {
+                "signature": "const Banner = ({ appName, token }) => {}",
+                "purpose": "Functional React component that accepts appName and token props, returning a banner div with branding when user is not logged in, or null when authenticated."
+            }
+        ]
+    },
+    "src/components/Editor.js": {
+        "purpose": "Provides a React component for creating and editing articles in a Redux-connected application. Manages form state for article title, description, body, and tags, dispatching Redux actions for field updates, tag management, and article submission. Handles both new article creation and existing article updates based on URL slug parameters.",
+        "functions": [
+            {
+                "signature": "constructor()",
+                "purpose": "Initializes the Editor component, binding event handlers for form field changes, tag management (add/remove), and form submission."
+            },
+            {
+                "signature": "componentWillReceiveProps(nextProps)",
+                "purpose": "Responds to prop changes, specifically monitoring URL slug changes to load article data for editing or reset the form for new articles."
+            },
+            {
+                "signature": "componentWillMount()",
+                "purpose": "Loads article data from the API if a slug is present in the URL parameters, or initializes an empty form for new article creation."
+            },
+            {
+                "signature": "componentWillUnmount()",
+                "purpose": "Dispatches cleanup action to unload editor state when the component is removed from the DOM."
+            },
+            {
+                "signature": "render()",
+                "purpose": "Renders the article editor form UI with input fields for title, description, body, tags, error display, and a publish button."
+            }
+        ]
+    },
+    "src/components/Home/Tags.js": {
+        "purpose": "Renders a list of clickable tag pills for filtering articles by tag in the home page. Displays a loading state when tags are not yet available and triggers article fetching via the agent when a tag is clicked.",
+        "functions": [
+            {
+                "signature": "const Tags = props => {...}",
+                "purpose": "Functional React component that receives tags and onClickTag callback via props, renders each tag as a clickable link that fetches articles filtered by the selected tag."
+            }
+        ]
+    },
+    "src/components/ArticlePreview.js": {
+        "purpose": "Renders a preview card for an article in a React-Redux application, displaying article metadata, author information, and favorite/unfavorite functionality. Connects to Redux store to dispatch favorite and unfavorite actions via the agent API service. Provides navigation links to article detail and author profile pages.",
+        "functions": [
+            {
+                "signature": "const mapDispatchToProps = dispatch => ({...})",
+                "purpose": "Maps Redux dispatch actions to component props, providing favorite and unfavorite functions that dispatch ARTICLE_FAVORITED and ARTICLE_UNFAVORITED actions with API payloads."
+            },
+            {
+                "signature": "const ArticlePreview = props => {...}",
+                "purpose": "Functional React component that renders an article preview card with author details, creation date, favorite button, title, description, and tag list. Handles click events to toggle article favorite status."
+            }
+        ]
+    },
+    "src/components/Home/MainView.js": {
+        "purpose": "Provides the main view component for the home page, managing tab navigation between 'Your Feed', 'Global Feed', and tag-filtered feeds. Connects to Redux store to dispatch tab change actions and render the appropriate article list based on the selected tab and user authentication state.",
+        "functions": [
+            {
+                "signature": "const YourFeedTab = props => {...}",
+                "purpose": "Renders the 'Your Feed' tab navigation item, visible only when user is authenticated. Dispatches a tab change action to load the user's personalized article feed when clicked."
+            },
+            {
+                "signature": "const GlobalFeedTab = props => {...}",
+                "purpose": "Renders the 'Global Feed' tab navigation item. Dispatches a tab change action to load all articles from the global feed when clicked."
+            },
+            {
+                "signature": "const TagFilterTab = props => {...}",
+                "purpose": "Renders a tag filter tab when a specific tag is selected, displaying the tag name with a hash icon to indicate filtered content."
+            },
+            {
+                "signature": "const MainView = props => {...}",
+                "purpose": "Main container component that renders the feed toggle navigation tabs and the ArticleList component with pagination and loading state management."
+            }
+        ]
+    },
+    "src/components/Header.js": {
+        "purpose": "Provides the main navigation header component for a React-Redux application. Conditionally renders navigation links based on user authentication state, displaying different menu options for logged-in versus logged-out users.",
+        "functions": [
+            {
+                "signature": "const LoggedOutView = props => {...}",
+                "purpose": "Renders navigation menu for unauthenticated users with links to Home, Sign in, and Sign up pages."
+            },
+            {
+                "signature": "const LoggedInView = props => {...}",
+                "purpose": "Renders navigation menu for authenticated users with links to Home, New Post editor, Settings, and user profile page with avatar."
+            },
+            {
+                "signature": "class Header extends React.Component { render() {...} }",
+                "purpose": "Main header component that renders the application navbar with branding and conditionally displays LoggedInView or LoggedOutView based on currentUser prop."
+            }
+        ]
+    },
+    "src/components/Home/index.js": {
+        "purpose": "Serves as the main Home page container component for a React-Redux application. Orchestrates the loading of article feeds (personalized or global based on authentication), popular tags, and dispatches Redux actions for page lifecycle events and tag filtering.",
+        "functions": [
+            {
+                "signature": "componentWillMount()",
+                "purpose": "Determines the appropriate article feed based on user authentication status and dispatches the HOME_PAGE_LOADED action with articles and tags data."
+            },
+            {
+                "signature": "componentWillUnmount()",
+                "purpose": "Dispatches the HOME_PAGE_UNLOADED action to clean up the component state when the Home page is unmounted."
+            },
+            {
+                "signature": "render()",
+                "purpose": "Renders the Home page layout including the Banner, MainView for articles, and Tags sidebar with popular tags."
+            }
+        ]
+    }
+}
